@@ -1,4 +1,5 @@
 baseURL = "https://heewonchung.github.io/"
+defaultContentLanguage = "en"
 languageCode = "en-us"
 title = "Heewon Chung"
 theme = "gokarna"
@@ -18,7 +19,7 @@ theme = "gokarna"
 
   [[menu.main]]
     name = "About"
-    url = "/about/"
+    url = "/about/" 
     weight = 2
 
   [[menu.main]]

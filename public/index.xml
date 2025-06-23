@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Heewon Chung</title>
-    <link>https://heewonchung.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Heewon Chung</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 17 Feb 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://heewonchung.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
-      <link>https://heewonchung.github.io/about/</link>
+      <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://heewonchung.github.io/about/</guid>
+      <guid>http://localhost:1313/about/</guid>
       <description>&lt;h3 id=&#34;education&#34;&gt;Education&lt;/h3&gt;&#xA;&lt;p&gt;Doctor of Philosophy in Mathematics, Seoul National University&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ph.D. in Mathematics&lt;/strong&gt;, KAIST, 2017&#xA;Thesis: Secure Computation via Homomorphic Encryption&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;M.S. in Mathematics&lt;/strong&gt;, POSTECH, 2011&#xA;Thesis: Efficient Inversion Algorithms and Its Application to ECDLP&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;B.S. in Mathematics&lt;/strong&gt;, Korea Advanced Institute of Science and Technology (KAIST), 2010&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;career&#34;&gt;Career&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
-      <title>Publications</title>
-      <link>https://heewonchung.github.io/publications/</link>
+      <title>Teaching</title>
+      <link>http://localhost:1313/teaching/</link>
       <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://heewonchung.github.io/publications/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://ieeexplore.ieee.org/document/10572359&#34;&gt;Multiparty Delegated Private Set Union with Efficient Updates on Outsourced Data&lt;/a&gt;&lt;br&gt;&#xA;  Heewon Chung, Myungsum Kim, and Chulsoon Patick Yang&lt;br&gt;&#xA;  IEEE Transactions on Dependable and Secure Computing (early access)&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;&#34;&gt;Authentication of Multi-agent System with Verifiable Computation&lt;/a&gt;&lt;br&gt;&#xA;  Seungbum Lee, Dongwoo Kim, Heewon Chung, Junsoo Kim, Hyungbo Shim&lt;br&gt;&#xA;  IEEE Conference on Decision and Control 2024&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://ieeexplore.ieee.org/document/10127630&#34;&gt;Amortized Efficient zk-SNARKs from Linear-Only RLWE Encodings&lt;/a&gt;&lt;br&gt;&#xA;  Heewon Chung, Dongwoo Kim, Jeong Han Kim, Jiseung Kim&lt;br&gt;&#xA;  Journal of Communications and Networks 25(3) 271-284, 2023&lt;/p&gt;</description>
+      <guid>http://localhost:1313/teaching/</guid>
+      <description>&lt;h3 id=&#34;2025-spring&#34;&gt;2025 Spring&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;디지털 공학&lt;/li&gt;&#xA;&lt;li&gt;데이터 분석 실무&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2024-fall&#34;&gt;2024 Fall&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2024-spring&#34;&gt;2024 Spring&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;블록체인 실무 응용&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
-      <title>Teaching</title>
-      <link>https://heewonchung.github.io/teaching/</link>
-      <pubDate>Mon, 17 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://heewonchung.github.io/teaching/</guid>
-      <description>&lt;h3 id=&#34;2025-spring&#34;&gt;2025 Spring&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;디지털 공학&lt;/li&gt;&#xA;&lt;li&gt;데이터 실무 응용&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2024-fall&#34;&gt;2024 Fall&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;2024-spring&#34;&gt;2024 Spring&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;블록체인 실무 응용&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      <title></title>
+      <link>http://localhost:1313/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/publications/</guid>
+      <description>&lt;!DOCTYPE html&gt;&#xA;&lt;html lang=&#34;ko&#34;&gt;&#xA;&lt;head&gt;&#xA;    &lt;meta charset=&#34;UTF-8&#34;&gt;&#xA;    &lt;title&gt;Publications&lt;/title&gt;&#xA;    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;&#xA;    &lt;!-- gokarna 테마와 어울리는 스타일 --&gt;&#xA;    &lt;style&gt;&#xA;        body {&#xA;            font-family: &#39;Noto Sans KR&#39;, &#39;Segoe UI&#39;, Arial, sans-serif;&#xA;        }&#xA;        h2 {&#xA;            /* color: var(--accent-color); */&#xA;            margin-bottom: 1.5rem;&#xA;            font-size: 1.8rem;&#xA;            letter-spacing: -1px;&#xA;        }&#xA;        .filter-container {&#xA;            display: flex;&#xA;            flex-wrap: wrap;&#xA;            gap: 6px;&#xA;            margin-bottom: 18px;&#xA;            align-items: center;&#xA;        }&#xA;        .filter-label {&#xA;            font-weight: bold;&#xA;            font-size: 0.9rem;&#xA;            margin-right: 6px;&#xA;        }&#xA;        .filter-button {&#xA;            padding: 3px 10px;&#xA;            border: none;&#xA;            background: #23272b;&#xA;            color: #ffcc00;&#xA;            border-radius: 6px;&#xA;            cursor: pointer;&#xA;            font-size: 0.85rem;&#xA;            transition: background 0.2s;&#xA;        }&#xA;        .filter-button.active, .filter-button:hover {&#xA;            background: #ffcc00;&#xA;            color: #23272b;&#xA;        }&#xA;        .paper {&#xA;            background: #23272b;&#xA;            border-radius: 8px;&#xA;            box-shadow: 0 2px 8px rgba(0,0,0,0.08);&#xA;            padding: 16px 14px 12px 14px;&#xA;            margin-bottom: 14px;&#xA;            transition: box-shadow 0.2s;&#xA;        }&#xA;        .paper a {&#xA;            color: #4da6ff;&#xA;            font-size: 1rem;&#xA;            font-weight: bold;&#xA;            text-decoration: none;&#xA;        }&#xA;        .paper a:hover {&#xA;            text-decoration: underline;&#xA;        }&#xA;        .paper p {&#xA;            margin: 4px 0 2px 0;&#xA;            font-size: 0.9rem;&#xA;            color: #e0e0e0;&#xA;            line-height: 1.5;&#xA;        }&#xA;        .conference {&#xA;            display: block;&#xA;            font-style: italic;&#xA;            font-size: 0.85rem;&#xA;            color: #b0b0b0;&#xA;            margin-top: 4px;&#xA;        }&#xA;        .highlight {&#xA;            color: #ffcc00;&#xA;            font-weight: bold;&#xA;        }&#xA;        .tags {&#xA;            margin-top: 6px;&#xA;            display: flex;&#xA;            flex-wrap: wrap;&#xA;            gap: 3px;&#xA;        }&#xA;        .tag {&#xA;            background: #444;&#xA;            color: #ffcc00;&#xA;            border-radius: 4px;&#xA;            padding: 1px 6px;&#xA;            font-size: 0.7rem;&#xA;            cursor: pointer;&#xA;            transition: background 0.2s;&#xA;            line-height: 1.4;&#xA;        }&#xA;        .tag:hover {&#xA;            background: #ffcc00;&#xA;            color: #23272b;&#xA;        }&#xA;        @media (max-width: 600px) {&#xA;            .container { padding: 6px; }&#xA;            h2 { font-size: 1.2rem; }&#xA;        }&#xA;    &lt;/style&gt;&#xA;&lt;/head&gt;&#xA;&lt;body&gt;&#xA;&lt;div class=&#34;container&#34;&gt;&#xA;    &lt;h2&gt;Publications&lt;/h2&gt;&#xA;    &lt;div id=&#34;papers-container&#34;&gt;&#xA;        &lt;div class=&#34;paper&#34; data-tags=&#34;mpc pso&#34;&gt;&#xA;            &lt;a href=&#34;https://ieeexplore.ieee.org/document/10572359&#34;&gt;Multiparty Delegated Private Set Union with Efficient Updates on Outsourced Data&lt;/a&gt;&#xA;            &lt;p&gt;&lt;span class=&#34;highlight&#34;&gt;Heewon Chung&lt;/span&gt;, Myungsun Kim, Chulsoon Patick Yang&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

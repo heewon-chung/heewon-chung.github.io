@@ -1,0 +1,30 @@
+---
+title: "Publications"
+---
+
+# Publications
+
+- [Multiparty Delegated Private Set Union with Efficient Updates on Outsourced Data](https://ieeexplore.ieee.org/document/10572359)  
+  <span style="color:#ffcc00;font-weight:bold;">Heewon Chung</span>, Myungsun Kim, Chulsoon Patick Yang  
+  _IEEE Transactions on Dependable and Secure Computing (early access)_  
+  <span class="tag">MPC</span> <span class="tag">Set Union</span>
+
+- [Authentication of Multi-agent System with Verifiable Computation](#)  
+  Seungbum Lee, Dongwoo Kim, <span style="color:#ffcc00;font-weight:bold;">Heewon Chung</span>, Junsoo Kim, Hyungbo Shim  
+  _2024 IEEE 63rd Conference on Decision and Control (CDC)_  
+  <span class="tag">VC</span>
+
+- [Amortized Efficient zk-SNARKs from Linear-Only RLWE Encodings](https://ieeexplore.ieee.org/document/10127630)  
+  <span style="color:#ffcc00;font-weight:bold;">Heewon Chung</span>, Dongwoo Kim, Jeong Han Kim, Jiseung Kim  
+  _Journal of Communications and Networks, 25(3) 271-284, 2023_  
+  <span class="tag">Zero-Knowledge Proof</span> <span class="tag">SNARK</span> <span class="tag">Post-Quantum Cryptography</span>
+
+- [Bulletproofs+: Shorter Proofs for Privacy-Enhanced Distributed Ledger](https://ieeexplore.ieee.org/document/9758733)  
+  <span style="color:#ffcc00;font-weight:bold;">Heewon Chung</span>, Kyoohyung Han, Chanyang Ju, Myungsun Kim, Jae Hong Seo  
+  _IEEE Access, vol. 10, pp. 42081-42096, 2022_  
+  <span class="tag">Zero-Knowledge Proof</span> <span class="tag">Blockchain</span>
+
+- [Homomorphic Comparison for Point Numbers with User-Controllable Precision and Its Applications](https://www.mdpi.com/2073-8994/12/5/788)  
+  <span style="color:#ffcc00;font-weight:bold;">Heewon Chung</span>, Myungsun Kim, A. Badawi, Khin Mi Mi Aung  
+  _Symmetry, 12(5):788, 2020_  
+  <span class="tag">Fully Homomorphic Encryption</span>
