@@ -15,6 +15,11 @@
             font-size: 1.8rem;
             letter-spacing: -1px;
         }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 4px 24px 4px;
+        }
         .filter-container {
             display: flex;
             flex-wrap: wrap;
@@ -31,38 +36,53 @@
             padding: 3px 10px;
             border: none;
             background: #23272b;
-            color: #ffcc00;
+            color: #7fdde9;
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.85rem;
-            transition: background 0.2s;
+            transition: background 0.2s, color 0.2s;
         }
         .filter-button.active, .filter-button:hover {
-            background: #ffcc00;
-            color: #23272b;
+            background: #333;
+            color: #7fdde9;
         }
-        .paper {
+        .papers-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .paper-item {
             background: #23272b;
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             padding: 16px 14px 12px 14px;
             margin-bottom: 14px;
-            transition: box-shadow 0.2s;
+            transition: box-shadow 0.2s, background 0.3s;
+            cursor: pointer;
+            border: none;
         }
-        .paper a {
+        .paper-item:hover {
+            box-shadow: 0 4px 16px rgba(127,221,233,0.12);
+            background: #282c34;
+        }
+        .paper-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .paper-title {
             color: #4da6ff;
             font-size: 1rem;
             font-weight: bold;
             text-decoration: none;
+            cursor: pointer;
         }
-        .paper a:hover {
+        .paper-title:hover {
             text-decoration: underline;
         }
-        .paper p {
-            margin: 4px 0 2px 0;
+        .authors {
             font-size: 0.9rem;
             color: #e0e0e0;
-            line-height: 1.5;
         }
         .conference {
             display: block;
@@ -82,8 +102,8 @@
             gap: 3px;
         }
         .tag {
-            background: #444;
-            color: #ffcc00;
+            background: #333;
+            color: #7fdde9;
             border-radius: 4px;
             padding: 1px 6px;
             font-size: 0.7rem;
@@ -92,8 +112,27 @@
             line-height: 1.4;
         }
         .tag:hover {
-            background: #ffcc00;
-            color: #23272b;
+            background: #555;
+            color: #fff;
+        }
+        .paper-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s, padding 0.4s;
+            padding: 0 0;
+        }
+        .paper-item.active .paper-details {
+            max-height: 1000px;
+            padding: 1rem 0 0.5rem 0;
+        }
+        .details-content {
+            border-top: 1px solid #444;
+            padding-top: 1.2rem;
+        }
+        .abstract {
+            font-size: 0.98rem;
+            color: #e0e0e0;
+            margin-bottom: 0.8rem;
         }
         @media (max-width: 600px) {
             .container { padding: 6px; }
@@ -104,57 +143,14 @@
 <body>
 <div class="container">
     <h2>Publications</h2>
-    <div id="papers-container">
-        <div class="paper" data-tags="mpc pso">
-            <a href="https://ieeexplore.ieee.org/document/10572359">Multiparty Delegated Private Set Union with Efficient Updates on Outsourced Data</a>
-            <p><span class="highlight">Heewon Chung</span>, Myungsun Kim, Chulsoon Patick Yang</p>
-            <span class="conference">IEEE Transactions on Dependable and Secure Computing (early access)</span>
-            <div class="tags">
-                <span class="tag" onclick="filterPapers('mpc')">MPC</span>
-                <span class="tag" onclick="filterPapers('pso')">Set Union</span>
-            </div>
-        </div>
-        <div class="paper" data-tags="vc">
-            <a href="#">Authentication of Multi-agent System with Verifiable Computation</a>
-            <p>Seungbum Lee, Dongwoo Kim, <span class="highlight">Heewon Chung</span>, Junsoo Kim, Hyungbo Shim</p>
-            <span class="conference">2024 IEEE 63rd Conference on Decision and Control (CDC)</span>
-            <div class="tags">
-                <span class="tag" onclick="filterPapers('vc')">VC</span>
-            </div>
-        </div>
-        <div class="paper" data-tags="zkp snark pqc">
-            <a href="https://ieeexplore.ieee.org/document/10127630">Amortized Efficient zk-SNARKs from Linear-Only RLWE Encodings</a>
-            <p><span class="highlight">Heewon Chung</span>, Dongwoo Kim, Jeong Han Kim, Jiseung Kim</p>
-            <span class="conference">Journal of Communications and Networks, 25(3) 271-284, 2023</span>
-            <div class="tags">
-                <span class="tag" onclick="filterPapers('zkp')">Zero-Knowledge Proof</span>
-                <span class="tag" onclick="filterPapers('snark')">SNARK</span>
-                <span class="tag" onclick="filterPapers('pqc')">Post-Quantum Cryptography</span>
-            </div>
-        </div>
-        <div class="paper" data-tags="zkp blockchain">
-            <a href="https://ieeexplore.ieee.org/document/9758733">Bulletproofs+: Shorter Proofs for Privacy-Enhanced Distributed Ledger</a>
-            <p><span class="highlight">Heewon Chung</span>, Kyoohyung Han, Chanyang Ju, Myungsun Kim, Jae Hong Seo</p>
-            <span class="conference">IEEE Access, vol. 10, pp. 42081-42096, 2022</span>
-            <div class="tags">
-                <span class="tag" onclick="filterPapers('zkp')">Zero-Knowledge Proof</span>
-                <span class="tag" onclick="filterPapers('blockchain')">Blockchain</span>
-            </div>
-        </div>
-        <div class="paper" data-tags="fhe">
-            <a href="https://www.mdpi.com/2073-8994/12/5/788">Homomorphic Comparison for Point Numbers with User-Controllable Precision and Its Applications</a>
-            <p><span class="highlight">Heewon Chung</span>, Myungsun Kim, A. Badawi, Khin Mi Mi Aung</p>
-            <span class="conference">Symmetry, 12(5):788, 2020</span>
-            <div class="tags">
-                <span class="tag" onclick="filterPapers('fhe')">Fully Homomorphic Encryption</span>
-            </div>
-        </div>
-    </div>
+    <ul class="papers-list" id="papers-container">
+        <!-- JS로 동적 생성 -->
+    </ul>
     <div class="filter-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #444;">
         <span class="filter-label">Filter by Tag:</span>
         <button class="filter-button active" onclick="filterPapers('all', this)">All</button>
         <button class="filter-button" onclick="filterPapers('mpc', this)">MPC</button>
-        <button class="filter-button" onclick="filterPapers('pso', this)">Set Union</button>
+        <button class="filter-button" onclick="filterPapers('pso', this)">Set Operations</button>
         <button class="filter-button" onclick="filterPapers('vc', this)">VC</button>
         <button class="filter-button" onclick="filterPapers('zkp', this)">Zero-Knowledge Proof</button>
         <button class="filter-button" onclick="filterPapers('snark', this)">SNARK</button>
@@ -164,20 +160,97 @@
     </div>
 </div>
 <script>
-    function filterPapers(tag, btn) {
-        const papers = document.querySelectorAll('.paper');
-        if (btn) {
-            document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-        papers.forEach(paper => {
-            if (tag === 'all' || paper.dataset.tags.includes(tag)) {
-                paper.style.display = '';
-            } else {
-                paper.style.display = 'none';
-            }
-        });
+const paperData = [
+    {
+        title: "Multiparty Delegated Private Set Union with Efficient Updates on Outsourced Data",
+        url: "https://ieeexplore.ieee.org/document/10572359",
+        authors: "Heewon Chung, Myungsun Kim, Chulsoon Patick Yang",
+        conference: "IEEE Transactions on Dependable and Secure Computing, vol. 22, no. 2, pp. 903-918, March-April 2025,",
+        tags: ["mpc", "pso"],
+        abstract: "Abstract: Private set union (PSU) has been an emerging topic in recent years due to its variety of applications. In particular, we are interested in deploying PSU in a cloud setting such that two players, the sender and the receiver, may outsource their sets to the cloud and update their sets. Later, the receiver can submit a union query to the cloud and learn the union of the sets without knowing the intersection. Of course, there is no need to restrict this scenario to only two players. A PSU operation that satisfies these properties is called updatable delegated PSU (UD-PSU). Despite the apparent usefulness of such operations, no related research, even on delegated PSU, has been conducted since Abadi et al. (TDSC 2017) posed the open problem of constructing a delegated PSU protocol. In this work, we address the above problem by presenting the first protocol for multiparty UD-PSU. Our starting point is Abadi et al.'s protocol (FC 2022) for multiparty updatable delegated private set intersection (a.k.a. Feather) built on a polynomial representation of the intersection of sets. The challenging hurdle for delegated PSU is to obtain a polynomial representation of the union of sets without revealing any information about the sets beyond the result. We develop a delegated PSU protocol by exploiting a rational polynomial representation. We then extend this basic protocol to support update operations, i.e., UD-PSU. Second, we improve the update efficiency of the resulting UD-PSU protocol to O~(nlogp), which works on polynomials of degree n over finite fields of order p. Finally, we implement our protocol in C++ and perform a comprehensive evaluation varying the cardinality of the sets and the number of players. Interestingly, the experimental results demonstrate that our protocol is comparable to Feather in overall performance. In particular, our update protocol shows an 8–12× improvement relative to Feather's update."
+    },
+    {
+        title: "Authentication of Multi-agent System with Verifiable Computation",
+        url: "https://ieeexplore.ieee.org/document/10886336",
+        authors: "Seungbum Lee, Dongwoo Kim, Heewon Chung, Junsoo Kim, Hyungbo Shim",
+        conference: "2024 IEEE 63rd Conference on Decision and Control (CDC)",
+        tags: ["vc"],
+        abstract: "Abstract: We propose an authentication scheme for a multiagent system over integers, based on verifiable computation primitives. The naive approach, employing Freivalds' algorithm in centralized way, faces several challenges. Specifically, unreliability of the network introduces the risk of information tampering by other agents. To this end, it requires locally updating and merging the proofs of the individual states in a distributed manner. Our proposed method addresses these issues with assuming presence of a leader agent who is responsible for validating the correctness of all the states of the agents. This can be achieved by a distributed protocol that aggregates proofs from the individual agents, relying on the well-known knowledge-of-exponent assumption. By using this distributed protocol, computational complexity and communication cost are reduced compared to centralized verification. Furthermore, we incorporate a clustering technique to distribute storage requirements."
+    },
+    {
+        title: "Amortized Efficient zk-SNARKs from Linear-Only RLWE Encodings",
+        url: "https://ieeexplore.ieee.org/document/10127630",
+        authors: "Heewon Chung, Dongwoo Kim, Jeong Han Kim, Jiseung Kim",
+        conference: "Journal of Communications and Networks, 25(3) 271-284, 2023",
+        tags: ["zkp", "snark", "pqc"],
+        abstract: "Abstract: This paper addresses a new lattice-based designated zk-SNARK having the smallest proof size in the amortized sense, from the linear-only ring learning with the error (RLWE) encodings. We first generalize a quadratic arithmetic programming (QAP) over a finite field to a ring-variant over a polynomial ring Zp [X]/(XN + 1) with a power of two N. Then, we propose a zk-SNARK over this ring with a linear-only encoding assumption on RLWE encodings. From the ring isomorphism Zp[X]/(XN + 1) ≅ ZNp, the proposed scheme packs multiple messages from Zp, resulting in much smaller amortized proof size compared to previous works. In addition, we present a refined analysis on the noise flooding technique based on the Hellinger divergence instead of the conventional statistical distance, which reduces the size of a proof. In particular, our proof size is 276.5 KB and the amortized proof size is only 156 bytes since our protocol allows to batch N proofs into a single proof. Therefore, we achieve the smallest amortized proof size in the category of lattice-based zk-SNARKs and comparable proof size in the (pre-quantum) zk-SNARKs category."
+    },
+    {
+        title: "Bulletproofs+: Shorter Proofs for Privacy-Enhanced Distributed Ledger",
+        url: "https://ieeexplore.ieee.org/document/9758733",
+        authors: "Heewon Chung, Kyoohyung Han, Chanyang Ju, Myungsun Kim, Jae Hong Seo",
+        conference: "IEEE Access, vol. 10, pp. 42081-42096, 2022",
+        tags: ["zkp", "blockchain"],
+        abstract: "Abstract: This paper presents a new short zero-knowledge argument for the range proof and arithmetic circuits without a trusted setup. In particular, it can achieve the shortest proof size of the proof system categories without a trusted setup. More specifically, when proving that a committed value is a positive integer less than 64 bits, except for negligible error in the 128-bit security parameter, the proof size is 576 bytes long, which is 85.7% the size of the previous shortest proof due to Bünz et al. (Bulletproofs, IEEE Security and Privacy 2018). Similarly, circuit satisfiability can be proven with less communication overhead. Nevertheless, computational overheads in both proof generation and verification are comparable with those of Bulletproofs. Bulletproofs is established as one of the important privacy-enhancing technologies for a distributed ledger due to its trustless feature and short proof size. In particular, it has been implemented and optimized in various programming languages for practical usage by independent entities since it was proposed. The essence of Bulletproofs is based on the logarithmic inner product argument with no zero-knowledge. This paper revisits Bulletproofs from the viewpoint of the first sublinear zero-knowledge argument for linear algebra due to Groth (CRYPTO 2009) and then propose Bulletproofs+, an improved variety of Bulletproofs. The main component is the zero-knowledge weighted inner product argument (zk-WIP) which enables to reduce both the range proof and the arithmetic circuit proof. It already has zero-knowledge properties, there is no additional information when reducing zk-WIP, and it incurs a minimal transmission cost during the reduction process. Note that zk-WIP has all characteristics of the inner product argument, such as an aggregating range proof and batch verification; thus, Bulletproofs+ is superior to Bulletproofs in all aspects."
+    },
+    {
+        title: "Homomorphic Comparison for Point Numbers with User-Controllable Precision and Its Applications",
+        url: "https://www.mdpi.com/2073-8994/12/5/788",
+        authors: "Heewon Chung, Myungsun Kim, A. Badawi, Khin Mi Mi Aung",
+        conference: "Symmetry, 12(5):788, 2020",
+        tags: ["fhe"],
+        abstract: "Abstract: This work is mainly interested in ensuring users' privacy in asymmetric computing, such as cloud computing. In particular, because lots of user data are expressed in non-integer data types, privacy-enhanced applications built on fully homomorphic encryption (FHE) must support real-valued comparisons due to the ubiquity of real numbers in real-world applications. However, as FHE schemes operate in specific domains, such as that of congruent integers, most FHE-based solutions focus only on homomorphic comparisons of integers. Attempts to overcome this barrier can be grouped into two classes. Given point numbers in the form of approximate real numbers, one class of solution uses a special-purpose encoding to represent the point numbers, whereas the other class constructs a dedicated FHE scheme to encrypt point numbers directly. The solutions in the former class may provide depth-efficient arithmetic (i.e., logarithmic depth in the size of the data), but not depth-efficient comparisons between FHE-encrypted point numbers. The second class may avoid this problem, but it requires the precision of point numbers to be determined before the FHE setup is run. Thus, the precision of the data cannot be controlled once the setup is complete. Furthermore, because the precision accuracy is closely related to the sizes of the encryption parameters, increasing the precision of point numbers results in increasing the sizes of the FHE parameters, which increases the sizes of the public keys and ciphertexts, incurring more expensive computation and storage. Unfortunately, this problem also occurs in many of the proposals that fall into the first class. In this work, we are interested in depth-efficient comparison over FHE-encrypted point numbers. In particular, we focus on enabling the precision of point numbers to be manipulated after the system parameters of the underlying FHE scheme are determined, and even after the point numbers are encrypted. To this end, we encode point numbers in continued fraction (CF) form. Therefore, our work lies in the first class of solutions, except that our CF-based approach allows depth-efficient homomorphic comparisons (more precisely, the complexity of the comparison is $O(log x+log n)$ for a number of partial quotients $n$ and their bit length $x$, which is normally small) while allowing users to determine the precision of the encrypted point numbers when running their applications. We develop several useful applications (e.g., sorting) that leverage our CF-based homomorphic comparisons."
     }
+];
+
+function filterPapers(tag, btn) {
+    const items = document.querySelectorAll('.paper-item');
+    if (btn) {
+        document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+    items.forEach(item => {
+        if (tag === 'all' || item.dataset.tags.includes(tag)) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const papersContainer = document.getElementById('papers-container');
+    paperData.forEach((paper, idx) => {
+        const item = document.createElement('li');
+        item.className = 'paper-item';
+        item.dataset.tags = paper.tags.join(' ');
+        item.innerHTML = `
+            <div class="paper-header">
+                <a class="paper-title" href="${paper.url}" target="_blank" rel="noopener">${paper.title}</a>
+                <span class="authors">${paper.authors.replace('Heewon Chung', '<span class=\'highlight\'>Heewon Chung</span>')}</span>
+                <span class="conference">${paper.conference}</span>
+                <div class="tags">
+                    ${paper.tags.map(t => `<span class="tag">${t.toUpperCase()}</span>`).join(' ')}
+                </div>
+            </div>
+            <div class="paper-details">
+                <div class="details-content">
+                    <p class="abstract"><strong>Abstract:</strong><br>${paper.abstract.replace(/^Abstract:\s*/i, '')}</p>
+                </div>
+            </div>
+        `;
+        item.addEventListener('click', (e) => {
+            // 논문 제목(링크) 클릭 시에는 아코디언 토글 없이 링크만 동작
+            if (e.target.classList.contains('paper-title')) return;
+            const currentlyActive = document.querySelector('.paper-item.active');
+            if (currentlyActive && currentlyActive !== item) {
+                currentlyActive.classList.remove('active');
+            }
+            item.classList.toggle('active');
+        });
+        papersContainer.appendChild(item);
+    });
+});
 </script>
 </body>
 </html>
