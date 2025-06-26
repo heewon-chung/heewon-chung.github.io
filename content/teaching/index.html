@@ -129,36 +129,18 @@
     </div>
     <script>
         const courseData = {
-            blockchain: {
-                title: "블록체인 실무 응용",
-                subtitle: "Blockchain Applications",
-                code: "SWE4010",
-                semesters: ["2021 Spring", "2021 Fall", "2022 Spring", "2022 Fall", "2023 Spring", "2023 Fall", "2024 Spring"],
-                description: "블록체인 기술의 기본 원리와 실무 응용 사례를 학습합니다. 스마트 컨트랙트 개발과 블록체인 플랫폼 활용을 다룹니다.",
-                topics: [
-                    "블록체인 기술의 기본 원리",
-                    "암호화 기법과 해시 함수",
-                    "합의 알고리즘과 네트워크 구조",
-                    "스마트 컨트랙트 개발",
-                    "이더리움과 솔리디티",
-                    "DeFi와 NFT 응용",
-                    "블록체인 보안과 프라이버시"
-                ]
-            },
             digital: {
                 title: "디지털 공학",
                 subtitle: "Digital Engineering",
                 code: "SWE2003",
                 semesters: ["2025 Spring"],
-                description: "디지털 시스템의 기본 원리와 설계 방법을 학습합니다. 논리 회로부터 마이크로프로세서까지 디지털 하드웨어의 전반을 다룹니다.",
+                description: "디지털 시스템의 기본 원리와 설계 방법을 학습",
                 topics: [
-                    "디지털 논리와 불 대수",
-                    "조합 논리 회로 설계",
-                    "순차 논리 회로와 플립플롭",
+                    "논리 게이트와 불 대수",
+                    "조합논리회로 설계",
+                    "순차논리회로와 플립플롭",
                     "카운터와 레지스터",
                     "메모리와 주변장치",
-                    "마이크로프로세서 구조",
-                    "디지털 시스템 설계 프로젝트"
                 ]
             },
             'data-analysis': {
@@ -177,38 +159,54 @@
                     "실무 데이터 분석 프로젝트"
                 ]
             },
-            java: {
-                title: "Java 프로그래밍",
-                subtitle: "Java Programming",
-                code: "SWE3002",
-                semesters: ["2025 Fall"],
-                description: "객체지향 프로그래밍 언어인 Java의 기본 문법과 프로그래밍 기법을 학습합니다. 실습을 통해 실제 프로그램 개발 능력을 기릅니다.",
+            // java: {
+            //     title: "Java 프로그래밍",
+            //     subtitle: "Java Programming",
+            //     code: "SWE3002",
+            //     semesters: ["2025 Fall"],
+            //     description: "객체지향 프로그래밍 언어인 Java의 기본 문법과 프로그래밍 기법을 학습합니다. 실습을 통해 실제 프로그램 개발 능력을 기릅니다.",
+            //     topics: [
+            //         "Java 언어의 기본 문법",
+            //         "객체지향 프로그래밍 개념",
+            //         "클래스와 객체, 상속과 다형성",
+            //         "인터페이스와 추상 클래스",
+            //         "예외 처리와 파일 입출력",
+            //         "컬렉션 프레임워크",
+            //         "GUI 프로그래밍 기초"
+            //     ]
+            // },
+            // probability: {
+            //     title: "확률과 통계",
+            //     subtitle: "Probability and Statistics",
+            //     code: "MATH2001",
+            //     semesters: ["2025 Fall"],
+            //     description: "확률론과 통계학의 기본 개념을 다루는 기초 수학 과목입니다. 확률 분포, 통계적 추론, 가설 검정 등을 학습하여 데이터 분석의 기초를 마련합니다.",
+            //     topics: [
+            //         "확률의 기본 개념과 공리",
+            //         "확률 변수와 확률 분포",
+            //         "이항분포, 정규분포, 포아송분포",
+            //         "표본 추출과 표본 분포",
+            //         "점추정과 구간추정",
+            //         "가설 검정과 유의성 검정",
+            //         "상관관계와 회귀분석"
+            //     ]
+            // },
+            blockchain: {
+                title: "블록체인 실무 응용",
+                subtitle: "Blockchain Applications",
+                code: "SWE4010",
+                semesters: ["2020 Spring", "2020 Fall", "2021 Spring", "2021 Fall", "2022 Spring", "2022 Fall", "2023 Spring", "2023 Fall", "2024 Spring"],
+                description: "블록체인 기술의 기본 원리와 실무 응용 사례를 학습합니다. 스마트 컨트랙트 개발과 블록체인 플랫폼 활용을 다룹니다.",
                 topics: [
-                    "Java 언어의 기본 문법",
-                    "객체지향 프로그래밍 개념",
-                    "클래스와 객체, 상속과 다형성",
-                    "인터페이스와 추상 클래스",
-                    "예외 처리와 파일 입출력",
-                    "컬렉션 프레임워크",
-                    "GUI 프로그래밍 기초"
+                    "블록체인 기술의 기본 원리",
+                    "암호화 기법과 해시 함수",
+                    "합의 알고리즘과 네트워크 구조",
+                    "스마트 컨트랙트 개발",
+                    "이더리움과 솔리디티",
+                    "DeFi와 NFT 응용",
+                    "블록체인 보안과 프라이버시"
                 ]
             },
-            probability: {
-                title: "확률과 통계",
-                subtitle: "Probability and Statistics",
-                code: "MATH2001",
-                semesters: ["2025 Fall"],
-                description: "확률론과 통계학의 기본 개념을 다루는 기초 수학 과목입니다. 확률 분포, 통계적 추론, 가설 검정 등을 학습하여 데이터 분석의 기초를 마련합니다.",
-                topics: [
-                    "확률의 기본 개념과 공리",
-                    "확률 변수와 확률 분포",
-                    "이항분포, 정규분포, 포아송분포",
-                    "표본 추출과 표본 분포",
-                    "점추정과 구간추정",
-                    "가설 검정과 유의성 검정",
-                    "상관관계와 회귀분석"
-                ]
-            }
         };
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -239,8 +237,6 @@
                     </div>
                 `;
                 item.addEventListener('click', (e) => {
-                    // 세부정보 클릭 시만 토글 (상위 li 클릭 시만)
-                    if (!e.target.classList.contains('course-header') && !e.target.classList.contains('course-title') && !e.target.classList.contains('course-subtitle')) return;
                     const currentlyActive = document.querySelector('.course-item.active');
                     if (currentlyActive && currentlyActive !== item) {
                         currentlyActive.classList.remove('active');

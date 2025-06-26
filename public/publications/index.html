@@ -353,12 +353,28 @@ const paperData = [
         abstract: "Abstract: This paper presents a new short zero-knowledge argument for the range proof and arithmetic circuits without a trusted setup. In particular, it can achieve the shortest proof size of the proof system categories without a trusted setup. More specifically, when proving that a committed value is a positive integer less than 64 bits, except for negligible error in the 128-bit security parameter, the proof size is 576 bytes long, which is 85.7% the size of the previous shortest proof due to Bünz et al. (Bulletproofs, IEEE Security and Privacy 2018). Similarly, circuit satisfiability can be proven with less communication overhead. Nevertheless, computational overheads in both proof generation and verification are comparable with those of Bulletproofs. Bulletproofs is established as one of the important privacy-enhancing technologies for a distributed ledger due to its trustless feature and short proof size. In particular, it has been implemented and optimized in various programming languages for practical usage by independent entities since it was proposed. The essence of Bulletproofs is based on the logarithmic inner product argument with no zero-knowledge. This paper revisits Bulletproofs from the viewpoint of the first sublinear zero-knowledge argument for linear algebra due to Groth (CRYPTO 2009) and then propose Bulletproofs+, an improved variety of Bulletproofs. The main component is the zero-knowledge weighted inner product argument (zk-WIP) which enables to reduce both the range proof and the arithmetic circuit proof. It already has zero-knowledge properties, there is no additional information when reducing zk-WIP, and it incurs a minimal transmission cost during the reduction process. Note that zk-WIP has all characteristics of the inner product argument, such as an aggregating range proof and batch verification; thus, Bulletproofs+ is superior to Bulletproofs in all aspects."
     },
     {
+        title: "Efficient Sum-Check Protocol for Convolution",
+        url: "https://ieeexplore.ieee.org/document/9638642",
+        authors: "Chanyang Ju, Hyeonbum Lee, Heewon Chung, Jae Hong Seo, Sungwook Kim",
+        conference: "IEEE Access, vol. 9, pp. 164047-164059, 2021",
+        tags: ["zkp", "vc"],
+        abstract: "Abstract: This paper presents a new short zero-knowledge argument for the range proof and arithmetic circuits without a trusted setup. In particular, it can achieve the shortest proof size of the proof system categories without a trusted setup. More specifically, when proving that a committed value is a positive integer less than 64 bits, except for negligible error in the 128-bit security parameter, the proof size is 576 bytes long, which is 85.7% the size of the previous shortest proof due to Bünz et al. (Bulletproofs, IEEE Security and Privacy 2018). Similarly, circuit satisfiability can be proven with less communication overhead. Nevertheless, computational overheads in both proof generation and verification are comparable with those of Bulletproofs. Bulletproofs is established as one of the important privacy-enhancing technologies for a distributed ledger due to its trustless feature and short proof size. In particular, it has been implemented and optimized in various programming languages for practical usage by independent entities since it was proposed. The essence of Bulletproofs is based on the logarithmic inner product argument with no zero-knowledge. This paper revisits Bulletproofs from the viewpoint of the first sublinear zero-knowledge argument for linear algebra due to Groth (CRYPTO 2009) and then propose Bulletproofs+, an improved variety of Bulletproofs. The main component is the zero-knowledge weighted inner product argument (zk-WIP) which enables to reduce both the range proof and the arithmetic circuit proof. It already has zero-knowledge properties, there is no additional information when reducing zk-WIP, and it incurs a minimal transmission cost during the reduction process. Note that zk-WIP has all characteristics of the inner product argument, such as an aggregating range proof and batch verification; thus, Bulletproofs+ is superior to Bulletproofs in all aspects."
+    },
+    {
         title: "Homomorphic Comparison for Point Numbers with User-Controllable Precision and Its Applications",
         url: "https://www.mdpi.com/2073-8994/12/5/788",
         authors: "Heewon Chung, Myungsun Kim, A. Badawi, Khin Mi Mi Aung",
         conference: "Symmetry, 12(5):788, 2020",
         tags: ["fhe"],
         abstract: "Abstract: This work is mainly interested in ensuring users' privacy in asymmetric computing, such as cloud computing. In particular, because lots of user data are expressed in non-integer data types, privacy-enhanced applications built on fully homomorphic encryption (FHE) must support real-valued comparisons due to the ubiquity of real numbers in real-world applications. However, as FHE schemes operate in specific domains, such as that of congruent integers, most FHE-based solutions focus only on homomorphic comparisons of integers. Attempts to overcome this barrier can be grouped into two classes. Given point numbers in the form of approximate real numbers, one class of solution uses a special-purpose encoding to represent the point numbers, whereas the other class constructs a dedicated FHE scheme to encrypt point numbers directly. The solutions in the former class may provide depth-efficient arithmetic (i.e., logarithmic depth in the size of the data), but not depth-efficient comparisons between FHE-encrypted point numbers. The second class may avoid this problem, but it requires the precision of point numbers to be determined before the FHE setup is run. Thus, the precision of the data cannot be controlled once the setup is complete. Furthermore, because the precision accuracy is closely related to the sizes of the encryption parameters, increasing the precision of point numbers results in increasing the sizes of the FHE parameters, which increases the sizes of the public keys and ciphertexts, incurring more expensive computation and storage. Unfortunately, this problem also occurs in many of the proposals that fall into the first class. In this work, we are interested in depth-efficient comparison over FHE-encrypted point numbers. In particular, we focus on enabling the precision of point numbers to be manipulated after the system parameters of the underlying FHE scheme are determined, and even after the point numbers are encrypted. To this end, we encode point numbers in continued fraction (CF) form. Therefore, our work lies in the first class of solutions, except that our CF-based approach allows depth-efficient homomorphic comparisons (more precisely, the complexity of the comparison is $O(log x+log n)$ for a number of partial quotients $n$ and their bit length $x$, which is normally small) while allowing users to determine the precision of the encrypted point numbers when running their applications. We develop several useful applications (e.g., sorting) that leverage our CF-based homomorphic comparisons."
+    },
+    {
+        title: "Encoding of Rational Numbers and Their Homomorphic Computations for FHE-Based Applications",
+        url: "https://www.worldscientific.com/doi/abs/10.1142/S0129054118500193",
+        authors: "Heewon Chung, Myungsun Kim",
+        conference: "International Journal of Foundations of Computer Science, vol. 29, No. 06, pp. 1023-1044, 2018",
+        tags: ["fhe"],
+        abstract: "Abstract: This work addresses a basic problem of security systems that operate on very sensitive information. Specifically, we are interested in the problem of privately handling numeric data represented by rational numbers (e.g., medical records). Fully homomorphic encryption (FHE) is one of the natural and powerful tools for ensuring privacy of sensitive data, while allowing complicated computations on the data. However, because the native plaintext domain of known FHE schemes is restricted to a set of quite small integers, it is not easy to obtain efficient algorithms for encrypted rational numbers in terms of space and computation costs. For example, the naïve decimal representation considerably restricts the choice of parameters in employing an FHE scheme, particularly the plaintext size. <br> Our basic strategy is to alleviate this inefficiency by using a different representation of rational numbers instead of naïve expressions. In this work we express rational numbers as continued fractions. Because continued fractions enable us to represent rational numbers as a sequence of integers, we can use a plaintext space with a small size while preserving the same quality of precision. However, this encoding technique requires performing very complex arithmetic operations, such as division and modular reduction. Theoretically, FHE allows the evaluation of any function, including modular reduction at encrypted data, but it requires a Boolean circuit of very high degree to be constructed. Hence, the primary contribution of this work is developing an approach to solve this efficiency problem using homomorphic operations with small degrees."
     }
 ];
 
@@ -376,6 +392,8 @@ function filterPapers(tag, btn) {
         }
     });
 }
+
+let lastTag = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const papersContainer = document.getElementById('papers-container');
@@ -399,6 +417,23 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         item.addEventListener('click', (e) => {
+            // 태그 클릭 시에는 아코디언 토글 없이 필터만 동작
+            if (e.target.classList.contains('tag')) {
+                const tag = e.target.textContent.trim().toLowerCase();
+                if (lastTag === tag) {
+                    filterPapers('all');
+                    lastTag = null;
+                    document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
+                    document.querySelector('.filter-button[onclick*="all"]')?.classList.add('active');
+                } else {
+                    filterPapers(tag);
+                    lastTag = tag;
+                    document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
+                    const btn = Array.from(document.querySelectorAll('.filter-button')).find(b => b.textContent.trim().toLowerCase() === tag);
+                    if (btn) btn.classList.add('active');
+                }
+                return;
+            }
             // 논문 제목(링크) 클릭 시에는 아코디언 토글 없이 링크만 동작
             if (e.target.classList.contains('paper-title')) return;
             const currentlyActive = document.querySelector('.paper-item.active');
@@ -431,9 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 
-    <span>
-        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
-    </span>
+    
 </footer>
 </body>
 </html>
