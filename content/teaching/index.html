@@ -6,15 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* 다크모드 전용 스타일 */
+        :root {
+            --bg-color: #22272e;
+            --text-color: #e0e0e0;
+            --card-bg: #23272b;
+            --card-hover-bg: #282c34;
+            --accent-color: #4da6ff;
+            --secondary-color: #7fdde9;
+            --muted-color: #b0b0b0;
+            --border-color: #444;
+            --tag-bg: #333;
+            --highlight-color: #ffcc00;
+        }
+        
         body {
             font-family: 'Noto Sans KR', 'Segoe UI', Arial, sans-serif;
-            background: #23272b;
-            color: #e0e0e0;
+            background: var(--bg-color);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
         }
         h2 {
-            color: #fff;
+            color: var(--text-color, #333333);
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             letter-spacing: -1px;
@@ -30,7 +44,7 @@
             margin: 0;
         }
         .course-item {
-            background: #23272b;
+            background: var(--card-bg, #f8f9fa);
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             padding: 16px 14px 12px 14px;
@@ -41,19 +55,19 @@
         }
         .course-item:hover {
             box-shadow: 0 4px 16px rgba(127,221,233,0.12);
-            background: #282c34;
+            background: var(--card-hover-bg, #e9ecef);
         }
         .course-header {
             font-size: 1.1rem;
             font-weight: bold;
-            color: #4da6ff;
+            color: var(--accent-color, #0056b3);
             display: flex;
             align-items: baseline;
             gap: 0.5rem;
         }
         .course-subtitle {
             font-size: 0.8rem;
-            color: #b0b0b0;
+            color: var(--muted-color, #6c757d);
             font-style: italic;
             margin-left: 0.5rem;
         }
@@ -64,8 +78,8 @@
             gap: 0.2rem;
         }
         .semester-tag {
-            background: #333;
-            color: #7fdde9;
+            background: var(--tag-bg, #e9ecef);
+            color: var(--secondary-color, #17a2b8);
             border-radius: 4px;
             padding: 1px 6px;
             font-size: 0.7rem;
@@ -83,18 +97,18 @@
             padding: 1rem 0 0.5rem 0;
         }
         .details-content {
-            border-top: 1px solid #444;
+            border-top: 1px solid var(--border-color, #dee2e6);
             padding-top: 1.2rem;
         }
         .course-description {
             font-size: 1rem;
-            color: #e0e0e0;
+            color: var(--text-color, #333333);
             margin-bottom: 1.2rem;
         }
         .topics-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #ffcc00;
+            color: var(--highlight-color, #f57c00);
             margin-bottom: 0.75rem;
         }
         .topics-list {
@@ -102,14 +116,14 @@
             padding: 0;
         }
         .topics-list li {
-            color: #b0b0b0;
+            color: var(--muted-color, #6c757d);
             margin-bottom: 0.5rem;
             padding-left: 1.25rem;
             position: relative;
         }
         .topics-list li::before {
             content: '›';
-            color: #ffcc00;
+            color: var(--highlight-color, #f57c00);
             position: absolute;
             left: 0;
             font-weight: bold;
@@ -245,6 +259,7 @@
                 });
                 coursesList.appendChild(item);
             }
+            
         });
     </script>
 </body>
