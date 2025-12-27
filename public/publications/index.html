@@ -159,311 +159,398 @@
     <div class="post-content">
         <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Publications</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- gokarna 테마와 어울리는 스타일 -->
     <style>
-        /* 다크모드 전용 스타일 */
-        :root {
-            --bg-color: #22272e;
-            --text-color: #e0e0e0;
-            --card-bg: #23272b;
-            --card-hover-bg: #282c34;
-            --accent-color: #4da6ff;
-            --secondary-color: #7fdde9;
-            --muted-color: #b0b0b0;
-            --border-color: #444;
-            --tag-bg: #333;
-        }
-        
-        body {
-            font-family: 'Noto Sans KR', 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
+      /* 다크모드 전용 스타일 */
+      :root {
+        --bg-color: #22272e;
+        --text-color: #e0e0e0;
+        --card-bg: #23272b;
+        --card-hover-bg: #282c34;
+        --accent-color: #4da6ff;
+        --secondary-color: #7fdde9;
+        --muted-color: #b0b0b0;
+        --border-color: #444;
+        --tag-bg: #333;
+      }
+
+      body {
+        font-family: "Noto Sans KR", "Segoe UI", Arial, sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+      }
+      h2 {
+        color: var(--text-color, #333333);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 4px 24px 4px;
+      }
+      .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 18px;
+        align-items: center;
+      }
+      .filter-label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-right: 6px;
+      }
+      .filter-button {
+        padding: 3px 10px;
+        border: none;
+        background: var(--card-bg, #f8f9fa);
+        color: var(--secondary-color, #17a2b8);
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: background 0.2s, color 0.2s;
+      }
+      .filter-button.active,
+      .filter-button:hover {
+        background: var(--tag-bg, #e9ecef);
+        color: var(--secondary-color, #17a2b8);
+      }
+      .papers-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .paper-item {
+        background: var(--card-bg, #f8f9fa);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 16px 14px 12px 14px;
+        margin-bottom: 14px;
+        transition: box-shadow 0.2s, background 0.3s;
+        cursor: pointer;
+        border: none;
+      }
+      .paper-item:hover {
+        box-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
+        background: var(--card-hover-bg, #e9ecef);
+      }
+      .paper-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .paper-title {
+        color: var(--accent-color, #0056b3);
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .paper-title:hover {
+        text-decoration: underline;
+      }
+      .authors {
+        font-size: 0.9rem;
+        color: var(--text-color, #333333);
+      }
+      .conference {
+        display: block;
+        font-style: italic;
+        font-size: 0.85rem;
+        color: var(--muted-color, #6c757d);
+        margin-top: 4px;
+      }
+      .highlight {
+        color: #ffcc00;
+        font-weight: bold;
+      }
+      .tags {
+        margin-top: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+      }
+      .tag {
+        background: var(--tag-bg, #e9ecef);
+        color: var(--secondary-color, #17a2b8);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 0.7rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        line-height: 1.4;
+      }
+      .tag:hover {
+        background: var(--border-color, #dee2e6);
+        color: var(--accent-color, #0056b3);
+      }
+      .paper-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s, padding 0.4s;
+        padding: 0 0;
+      }
+      .paper-item.active .paper-details {
+        max-height: 1000px;
+        padding: 1rem 0 0.5rem 0;
+      }
+      .details-content {
+        border-top: 1px solid var(--border-color, #dee2e6);
+        padding-top: 1.2rem;
+      }
+      .abstract {
+        font-size: 0.98rem;
+        color: var(--text-color, #333333);
+        margin-bottom: 0.8rem;
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 6px;
         }
         h2 {
-            color: var(--text-color, #333333);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            letter-spacing: -1px;
+          font-size: 1.2rem;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 4px 24px 4px;
-        }
-        .filter-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 18px;
-            align-items: center;
-        }
-        .filter-label {
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-right: 6px;
-        }
-        .filter-button {
-            padding: 3px 10px;
-            border: none;
-            background: var(--card-bg, #f8f9fa);
-            color: var(--secondary-color, #17a2b8);
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: background 0.2s, color 0.2s;
-        }
-        .filter-button.active, .filter-button:hover {
-            background: var(--tag-bg, #e9ecef);
-            color: var(--secondary-color, #17a2b8);
-        }
-        .papers-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .paper-item {
-            background: var(--card-bg, #f8f9fa);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 16px 14px 12px 14px;
-            margin-bottom: 14px;
-            transition: box-shadow 0.2s, background 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-        .paper-item:hover {
-            box-shadow: 0 4px 16px rgba(127,221,233,0.12);
-            background: var(--card-hover-bg, #e9ecef);
-        }
-        .paper-header {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-        }
-        .paper-title {
-            color: var(--accent-color, #0056b3);
-            font-size: 1rem;
-            font-weight: bold;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .paper-title:hover {
-            text-decoration: underline;
-        }
-        .authors {
-            font-size: 0.9rem;
-            color: var(--text-color, #333333);
-        }
-        .conference {
-            display: block;
-            font-style: italic;
-            font-size: 0.85rem;
-            color: var(--muted-color, #6c757d);
-            margin-top: 4px;
-        }
-        .highlight {
-            color: #ffcc00;
-            font-weight: bold;
-        }
-        .tags {
-            margin-top: 6px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 3px;
-        }
-        .tag {
-            background: var(--tag-bg, #e9ecef);
-            color: var(--secondary-color, #17a2b8);
-            border-radius: 4px;
-            padding: 1px 6px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: background 0.2s;
-            line-height: 1.4;
-        }
-        .tag:hover {
-            background: var(--border-color, #dee2e6);
-            color: var(--accent-color, #0056b3);
-        }
-        .paper-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s, padding 0.4s;
-            padding: 0 0;
-        }
-        .paper-item.active .paper-details {
-            max-height: 1000px;
-            padding: 1rem 0 0.5rem 0;
-        }
-        .details-content {
-            border-top: 1px solid var(--border-color, #dee2e6);
-            padding-top: 1.2rem;
-        }
-        .abstract {
-            font-size: 0.98rem;
-            color: var(--text-color, #333333);
-            margin-bottom: 0.8rem;
-        }
-        @media (max-width: 600px) {
-            .container { padding: 6px; }
-            h2 { font-size: 1.2rem; }
-        }
+      }
     </style>
-</head>
-<body>
-<div class="container">
-    <h2>Publications</h2>
-    <ul class="papers-list" id="papers-container">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Publications</h2>
+      <ul class="papers-list" id="papers-container">
         <!-- JS로 동적 생성 -->
-    </ul>
-    <div class="filter-container" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color, #dee2e6);">
+      </ul>
+      <div
+        class="filter-container"
+        style="
+          margin-top: 2rem;
+          padding-top: 1rem;
+          border-top: 1px solid var(--border-color, #dee2e6);
+        "
+      >
         <span class="filter-label">Filter by Tag:</span>
-        <button class="filter-button active" onclick="filterPapers('all', this)">All</button>
-        <button class="filter-button" onclick="filterPapers('mpc', this)">MPC</button>
-        <button class="filter-button" onclick="filterPapers('pso', this)">Set Operations</button>
-        <button class="filter-button" onclick="filterPapers('vc', this)">VC</button>
-        <button class="filter-button" onclick="filterPapers('zkp', this)">Zero-Knowledge Proof</button>
-        <button class="filter-button" onclick="filterPapers('snark', this)">SNARK</button>
-        <button class="filter-button" onclick="filterPapers('pqc', this)">Post-Quantum</button>
-        <button class="filter-button" onclick="filterPapers('blockchain', this)">Blockchain</button>
-        <button class="filter-button" onclick="filterPapers('fhe', this)">FHE</button>
+        <button
+          class="filter-button active"
+          onclick="filterPapers('all', this)"
+        >
+          All
+        </button>
+        <button class="filter-button" onclick="filterPapers('mpc', this)">
+          MPC
+        </button>
+        <button class="filter-button" onclick="filterPapers('pso', this)">
+          Set Operations
+        </button>
+        <button class="filter-button" onclick="filterPapers('vc', this)">
+          VC
+        </button>
+        <button class="filter-button" onclick="filterPapers('zkp', this)">
+          Zero-Knowledge Proof
+        </button>
+        <button class="filter-button" onclick="filterPapers('snark', this)">
+          SNARK
+        </button>
+        <button class="filter-button" onclick="filterPapers('pqc', this)">
+          Post-Quantum
+        </button>
+        <button
+          class="filter-button"
+          onclick="filterPapers('blockchain', this)"
+        >
+          Blockchain
+        </button>
+        <button class="filter-button" onclick="filterPapers('fhe', this)">
+          FHE
+        </button>
+      </div>
     </div>
-</div>
-<script>
-const paperData = [
-    {
-        title: "Multiparty Delegated Private Set Union with Efficient Updates on Outsourced Data",
-        url: "https://ieeexplore.ieee.org/document/10572359",
-        authors: "Heewon Chung, Myungsun Kim, Chulsoon Patick Yang",
-        conference: "IEEE Transactions on Dependable and Secure Computing, vol. 22, no. 2, pp. 903-918, March-April 2025,",
-        tags: ["mpc", "pso"],
-        abstract: "Abstract: Private set union (PSU) has been an emerging topic in recent years due to its variety of applications. In particular, we are interested in deploying PSU in a cloud setting such that two players, the sender and the receiver, may outsource their sets to the cloud and update their sets. Later, the receiver can submit a union query to the cloud and learn the union of the sets without knowing the intersection. Of course, there is no need to restrict this scenario to only two players. A PSU operation that satisfies these properties is called updatable delegated PSU (UD-PSU). Despite the apparent usefulness of such operations, no related research, even on delegated PSU, has been conducted since Abadi et al. (TDSC 2017) posed the open problem of constructing a delegated PSU protocol. In this work, we address the above problem by presenting the first protocol for multiparty UD-PSU. Our starting point is Abadi et al.'s protocol (FC 2022) for multiparty updatable delegated private set intersection (a.k.a. Feather) built on a polynomial representation of the intersection of sets. The challenging hurdle for delegated PSU is to obtain a polynomial representation of the union of sets without revealing any information about the sets beyond the result. We develop a delegated PSU protocol by exploiting a rational polynomial representation. We then extend this basic protocol to support update operations, i.e., UD-PSU. Second, we improve the update efficiency of the resulting UD-PSU protocol to O~(nlogp), which works on polynomials of degree n over finite fields of order p. Finally, we implement our protocol in C++ and perform a comprehensive evaluation varying the cardinality of the sets and the number of players. Interestingly, the experimental results demonstrate that our protocol is comparable to Feather in overall performance. In particular, our update protocol shows an 8–12× improvement relative to Feather's update."
-    },
-    {
-        title: "Authentication of Multi-agent System with Verifiable Computation",
-        url: "https://ieeexplore.ieee.org/document/10886336",
-        authors: "Seungbum Lee, Dongwoo Kim, Heewon Chung, Junsoo Kim, Hyungbo Shim",
-        conference: "2024 IEEE 63rd Conference on Decision and Control (CDC)",
-        tags: ["vc"],
-        abstract: "Abstract: We propose an authentication scheme for a multiagent system over integers, based on verifiable computation primitives. The naive approach, employing Freivalds' algorithm in centralized way, faces several challenges. Specifically, unreliability of the network introduces the risk of information tampering by other agents. To this end, it requires locally updating and merging the proofs of the individual states in a distributed manner. Our proposed method addresses these issues with assuming presence of a leader agent who is responsible for validating the correctness of all the states of the agents. This can be achieved by a distributed protocol that aggregates proofs from the individual agents, relying on the well-known knowledge-of-exponent assumption. By using this distributed protocol, computational complexity and communication cost are reduced compared to centralized verification. Furthermore, we incorporate a clustering technique to distribute storage requirements."
-    },
-    {
-        title: "Amortized Efficient zk-SNARKs from Linear-Only RLWE Encodings",
-        url: "https://ieeexplore.ieee.org/document/10127630",
-        authors: "Heewon Chung, Dongwoo Kim, Jeong Han Kim, Jiseung Kim",
-        conference: "Journal of Communications and Networks, 25(3) 271-284, 2023",
-        tags: ["zkp", "snark", "pqc"],
-        abstract: "Abstract: This paper addresses a new lattice-based designated zk-SNARK having the smallest proof size in the amortized sense, from the linear-only ring learning with the error (RLWE) encodings. We first generalize a quadratic arithmetic programming (QAP) over a finite field to a ring-variant over a polynomial ring Zp [X]/(XN + 1) with a power of two N. Then, we propose a zk-SNARK over this ring with a linear-only encoding assumption on RLWE encodings. From the ring isomorphism Zp[X]/(XN + 1) ≅ ZNp, the proposed scheme packs multiple messages from Zp, resulting in much smaller amortized proof size compared to previous works. In addition, we present a refined analysis on the noise flooding technique based on the Hellinger divergence instead of the conventional statistical distance, which reduces the size of a proof. In particular, our proof size is 276.5 KB and the amortized proof size is only 156 bytes since our protocol allows to batch N proofs into a single proof. Therefore, we achieve the smallest amortized proof size in the category of lattice-based zk-SNARKs and comparable proof size in the (pre-quantum) zk-SNARKs category."
-    },
-    {
-        title: "Bulletproofs+: Shorter Proofs for Privacy-Enhanced Distributed Ledger",
-        url: "https://ieeexplore.ieee.org/document/9758733",
-        authors: "Heewon Chung, Kyoohyung Han, Chanyang Ju, Myungsun Kim, Jae Hong Seo",
-        conference: "IEEE Access, vol. 10, pp. 42081-42096, 2022",
-        tags: ["zkp", "blockchain"],
-        abstract: "Abstract: This paper presents a new short zero-knowledge argument for the range proof and arithmetic circuits without a trusted setup. In particular, it can achieve the shortest proof size of the proof system categories without a trusted setup. More specifically, when proving that a committed value is a positive integer less than 64 bits, except for negligible error in the 128-bit security parameter, the proof size is 576 bytes long, which is 85.7% the size of the previous shortest proof due to Bünz et al. (Bulletproofs, IEEE Security and Privacy 2018). Similarly, circuit satisfiability can be proven with less communication overhead. Nevertheless, computational overheads in both proof generation and verification are comparable with those of Bulletproofs. Bulletproofs is established as one of the important privacy-enhancing technologies for a distributed ledger due to its trustless feature and short proof size. In particular, it has been implemented and optimized in various programming languages for practical usage by independent entities since it was proposed. The essence of Bulletproofs is based on the logarithmic inner product argument with no zero-knowledge. This paper revisits Bulletproofs from the viewpoint of the first sublinear zero-knowledge argument for linear algebra due to Groth (CRYPTO 2009) and then propose Bulletproofs+, an improved variety of Bulletproofs. The main component is the zero-knowledge weighted inner product argument (zk-WIP) which enables to reduce both the range proof and the arithmetic circuit proof. It already has zero-knowledge properties, there is no additional information when reducing zk-WIP, and it incurs a minimal transmission cost during the reduction process. Note that zk-WIP has all characteristics of the inner product argument, such as an aggregating range proof and batch verification; thus, Bulletproofs+ is superior to Bulletproofs in all aspects."
-    },
-    {
-        title: "Efficient Sum-Check Protocol for Convolution",
-        url: "https://ieeexplore.ieee.org/document/9638642",
-        authors: "Chanyang Ju, Hyeonbum Lee, Heewon Chung, Jae Hong Seo, Sungwook Kim",
-        conference: "IEEE Access, vol. 9, pp. 164047-164059, 2021",
-        tags: ["zkp", "vc"],
-        abstract: "Abstract: This paper presents a new short zero-knowledge argument for the range proof and arithmetic circuits without a trusted setup. In particular, it can achieve the shortest proof size of the proof system categories without a trusted setup. More specifically, when proving that a committed value is a positive integer less than 64 bits, except for negligible error in the 128-bit security parameter, the proof size is 576 bytes long, which is 85.7% the size of the previous shortest proof due to Bünz et al. (Bulletproofs, IEEE Security and Privacy 2018). Similarly, circuit satisfiability can be proven with less communication overhead. Nevertheless, computational overheads in both proof generation and verification are comparable with those of Bulletproofs. Bulletproofs is established as one of the important privacy-enhancing technologies for a distributed ledger due to its trustless feature and short proof size. In particular, it has been implemented and optimized in various programming languages for practical usage by independent entities since it was proposed. The essence of Bulletproofs is based on the logarithmic inner product argument with no zero-knowledge. This paper revisits Bulletproofs from the viewpoint of the first sublinear zero-knowledge argument for linear algebra due to Groth (CRYPTO 2009) and then propose Bulletproofs+, an improved variety of Bulletproofs. The main component is the zero-knowledge weighted inner product argument (zk-WIP) which enables to reduce both the range proof and the arithmetic circuit proof. It already has zero-knowledge properties, there is no additional information when reducing zk-WIP, and it incurs a minimal transmission cost during the reduction process. Note that zk-WIP has all characteristics of the inner product argument, such as an aggregating range proof and batch verification; thus, Bulletproofs+ is superior to Bulletproofs in all aspects."
-    },
-    {
-        title: "Homomorphic Comparison for Point Numbers with User-Controllable Precision and Its Applications",
-        url: "https://www.mdpi.com/2073-8994/12/5/788",
-        authors: "Heewon Chung, Myungsun Kim, A. Badawi, Khin Mi Mi Aung",
-        conference: "Symmetry, 12(5):788, 2020",
-        tags: ["fhe"],
-        abstract: "Abstract: This work is mainly interested in ensuring users' privacy in asymmetric computing, such as cloud computing. In particular, because lots of user data are expressed in non-integer data types, privacy-enhanced applications built on fully homomorphic encryption (FHE) must support real-valued comparisons due to the ubiquity of real numbers in real-world applications. However, as FHE schemes operate in specific domains, such as that of congruent integers, most FHE-based solutions focus only on homomorphic comparisons of integers. Attempts to overcome this barrier can be grouped into two classes. Given point numbers in the form of approximate real numbers, one class of solution uses a special-purpose encoding to represent the point numbers, whereas the other class constructs a dedicated FHE scheme to encrypt point numbers directly. The solutions in the former class may provide depth-efficient arithmetic (i.e., logarithmic depth in the size of the data), but not depth-efficient comparisons between FHE-encrypted point numbers. The second class may avoid this problem, but it requires the precision of point numbers to be determined before the FHE setup is run. Thus, the precision of the data cannot be controlled once the setup is complete. Furthermore, because the precision accuracy is closely related to the sizes of the encryption parameters, increasing the precision of point numbers results in increasing the sizes of the FHE parameters, which increases the sizes of the public keys and ciphertexts, incurring more expensive computation and storage. Unfortunately, this problem also occurs in many of the proposals that fall into the first class. In this work, we are interested in depth-efficient comparison over FHE-encrypted point numbers. In particular, we focus on enabling the precision of point numbers to be manipulated after the system parameters of the underlying FHE scheme are determined, and even after the point numbers are encrypted. To this end, we encode point numbers in continued fraction (CF) form. Therefore, our work lies in the first class of solutions, except that our CF-based approach allows depth-efficient homomorphic comparisons (more precisely, the complexity of the comparison is $O(log x+log n)$ for a number of partial quotients $n$ and their bit length $x$, which is normally small) while allowing users to determine the precision of the encrypted point numbers when running their applications. We develop several useful applications (e.g., sorting) that leverage our CF-based homomorphic comparisons."
-    },
-    {
-        title: "Encoding of Rational Numbers and Their Homomorphic Computations for FHE-Based Applications",
-        url: "https://www.worldscientific.com/doi/abs/10.1142/S0129054118500193",
-        authors: "Heewon Chung, Myungsun Kim",
-        conference: "International Journal of Foundations of Computer Science, vol. 29, No. 06, pp. 1023-1044, 2018",
-        tags: ["fhe"],
-        abstract: "Abstract: This work addresses a basic problem of security systems that operate on very sensitive information. Specifically, we are interested in the problem of privately handling numeric data represented by rational numbers (e.g., medical records). Fully homomorphic encryption (FHE) is one of the natural and powerful tools for ensuring privacy of sensitive data, while allowing complicated computations on the data. However, because the native plaintext domain of known FHE schemes is restricted to a set of quite small integers, it is not easy to obtain efficient algorithms for encrypted rational numbers in terms of space and computation costs. For example, the naïve decimal representation considerably restricts the choice of parameters in employing an FHE scheme, particularly the plaintext size. <br> Our basic strategy is to alleviate this inefficiency by using a different representation of rational numbers instead of naïve expressions. In this work we express rational numbers as continued fractions. Because continued fractions enable us to represent rational numbers as a sequence of integers, we can use a plaintext space with a small size while preserving the same quality of precision. However, this encoding technique requires performing very complex arithmetic operations, such as division and modular reduction. Theoretically, FHE allows the evaluation of any function, including modular reduction at encrypted data, but it requires a Boolean circuit of very high degree to be constructed. Hence, the primary contribution of this work is developing an approach to solve this efficiency problem using homomorphic operations with small degrees."
-    }
-];
+    <script>
+      const paperData = [
+        {
+          title:
+            "Doubly Efficient Fuzzy Private Set Intersection for High-dimensional Data with Cosine Similarity",
+          url: "https://ieeexplore.ieee.org/document/11316118",
+          authors:
+            "Hyunjung Son, Seunghun Paik, Yunki Kim, Sunpill Kim, Heewon Chung, Jae Hong Seo",
+          conference: "IEEE Access",
+          tags: ["pso", "vc"],
+          abstract:
+            "Fuzzy private set intersection (Fuzzy PSI) is a cryptographic protocol for privacy-preserving similarity matching, which is one of the essential operations in various real-world applications such as facial authentication, information retrieval, or recommendation systems. Despite recent advancements in fuzzy PSI protocols, still a huge barrier remains in deploying them for these applications. The main obstacle is the high dimensionality, e.g., from 128 to 512, of data; lots of existing methods, Garimella et al. (CRYPTO’23, CRYPTO’24) or van Baarsen et al. (EUROCRYPT’24), suffer from exponential overhead on communication and/or computation cost. In addition, the dominant similarity metric in these applications is cosine similarity, which disables several optimization tricks based on assumptions for the distribution of data, e.g., techniques by Gao et al. (ASIACRYPT’24). In this paper, we propose a novel fuzzy PSI protocol for cosine similarity, called FPHE, that overcomes these limitations at the same time. FPHE features linear complexity on both computation and communication with respect to the dimension of set elements, only requiring much weaker assumption than prior works. The basic strategy of ours is to homomorphically compute cosine similarity and run an approximated comparison function, with a clever packing method for efficiency. In addition, we introduce a novel proof technique to harmonize the approximation error from the sign function with the noise flooding, proving the security of FPHE under the semi-honest model. Moreover, we show that our construction can be extended to support various functionalities, such as labeled or circuit fuzzy PSI. Through experiments, we show that FPHE can perform fuzzy PSI over 512-dimensional data in a few minutes, which was computationally infeasible for all previous proposals under the same assumption as ours.",
+        },
+        {
+          title:
+            "Multiparty Delegated Private Set Union with Efficient Updates on Outsourced Data",
+          url: "https://ieeexplore.ieee.org/document/10572359",
+          authors: "Heewon Chung, Myungsun Kim, Chulsoon Patick Yang",
+          conference:
+            "IEEE Transactions on Dependable and Secure Computing, vol. 22, no. 2, pp. 903-918, March-April 2025,",
+          tags: ["mpc", "pso"],
+          abstract:
+            "Abstract: Private set union (PSU) has been an emerging topic in recent years due to its variety of applications. In particular, we are interested in deploying PSU in a cloud setting such that two players, the sender and the receiver, may outsource their sets to the cloud and update their sets. Later, the receiver can submit a union query to the cloud and learn the union of the sets without knowing the intersection. Of course, there is no need to restrict this scenario to only two players. A PSU operation that satisfies these properties is called updatable delegated PSU (UD-PSU). Despite the apparent usefulness of such operations, no related research, even on delegated PSU, has been conducted since Abadi et al. (TDSC 2017) posed the open problem of constructing a delegated PSU protocol. In this work, we address the above problem by presenting the first protocol for multiparty UD-PSU. Our starting point is Abadi et al.'s protocol (FC 2022) for multiparty updatable delegated private set intersection (a.k.a. Feather) built on a polynomial representation of the intersection of sets. The challenging hurdle for delegated PSU is to obtain a polynomial representation of the union of sets without revealing any information about the sets beyond the result. We develop a delegated PSU protocol by exploiting a rational polynomial representation. We then extend this basic protocol to support update operations, i.e., UD-PSU. Second, we improve the update efficiency of the resulting UD-PSU protocol to O~(nlogp), which works on polynomials of degree n over finite fields of order p. Finally, we implement our protocol in C++ and perform a comprehensive evaluation varying the cardinality of the sets and the number of players. Interestingly, the experimental results demonstrate that our protocol is comparable to Feather in overall performance. In particular, our update protocol shows an 8–12× improvement relative to Feather's update.",
+        },
+        {
+          title:
+            "Authentication of Multi-agent System with Verifiable Computation",
+          url: "https://ieeexplore.ieee.org/document/10886336",
+          authors:
+            "Seungbum Lee, Dongwoo Kim, Heewon Chung, Junsoo Kim, Hyungbo Shim",
+          conference: "2024 IEEE 63rd Conference on Decision and Control (CDC)",
+          tags: ["vc"],
+          abstract:
+            "Abstract: We propose an authentication scheme for a multiagent system over integers, based on verifiable computation primitives. The naive approach, employing Freivalds' algorithm in centralized way, faces several challenges. Specifically, unreliability of the network introduces the risk of information tampering by other agents. To this end, it requires locally updating and merging the proofs of the individual states in a distributed manner. Our proposed method addresses these issues with assuming presence of a leader agent who is responsible for validating the correctness of all the states of the agents. This can be achieved by a distributed protocol that aggregates proofs from the individual agents, relying on the well-known knowledge-of-exponent assumption. By using this distributed protocol, computational complexity and communication cost are reduced compared to centralized verification. Furthermore, we incorporate a clustering technique to distribute storage requirements.",
+        },
+        {
+          title:
+            "Amortized Efficient zk-SNARKs from Linear-Only RLWE Encodings",
+          url: "https://ieeexplore.ieee.org/document/10127630",
+          authors: "Heewon Chung, Dongwoo Kim, Jeong Han Kim, Jiseung Kim",
+          conference:
+            "Journal of Communications and Networks, 25(3) 271-284, 2023",
+          tags: ["zkp", "snark", "pqc"],
+          abstract:
+            "Abstract: This paper addresses a new lattice-based designated zk-SNARK having the smallest proof size in the amortized sense, from the linear-only ring learning with the error (RLWE) encodings. We first generalize a quadratic arithmetic programming (QAP) over a finite field to a ring-variant over a polynomial ring Zp [X]/(XN + 1) with a power of two N. Then, we propose a zk-SNARK over this ring with a linear-only encoding assumption on RLWE encodings. From the ring isomorphism Zp[X]/(XN + 1) ≅ ZNp, the proposed scheme packs multiple messages from Zp, resulting in much smaller amortized proof size compared to previous works. In addition, we present a refined analysis on the noise flooding technique based on the Hellinger divergence instead of the conventional statistical distance, which reduces the size of a proof. In particular, our proof size is 276.5 KB and the amortized proof size is only 156 bytes since our protocol allows to batch N proofs into a single proof. Therefore, we achieve the smallest amortized proof size in the category of lattice-based zk-SNARKs and comparable proof size in the (pre-quantum) zk-SNARKs category.",
+        },
+        {
+          title:
+            "Bulletproofs+: Shorter Proofs for Privacy-Enhanced Distributed Ledger",
+          url: "https://ieeexplore.ieee.org/document/9758733",
+          authors:
+            "Heewon Chung, Kyoohyung Han, Chanyang Ju, Myungsun Kim, Jae Hong Seo",
+          conference: "IEEE Access, vol. 10, pp. 42081-42096, 2022",
+          tags: ["zkp", "blockchain"],
+          abstract:
+            "Abstract: This paper presents a new short zero-knowledge argument for the range proof and arithmetic circuits without a trusted setup. In particular, it can achieve the shortest proof size of the proof system categories without a trusted setup. More specifically, when proving that a committed value is a positive integer less than 64 bits, except for negligible error in the 128-bit security parameter, the proof size is 576 bytes long, which is 85.7% the size of the previous shortest proof due to Bünz et al. (Bulletproofs, IEEE Security and Privacy 2018). Similarly, circuit satisfiability can be proven with less communication overhead. Nevertheless, computational overheads in both proof generation and verification are comparable with those of Bulletproofs. Bulletproofs is established as one of the important privacy-enhancing technologies for a distributed ledger due to its trustless feature and short proof size. In particular, it has been implemented and optimized in various programming languages for practical usage by independent entities since it was proposed. The essence of Bulletproofs is based on the logarithmic inner product argument with no zero-knowledge. This paper revisits Bulletproofs from the viewpoint of the first sublinear zero-knowledge argument for linear algebra due to Groth (CRYPTO 2009) and then propose Bulletproofs+, an improved variety of Bulletproofs. The main component is the zero-knowledge weighted inner product argument (zk-WIP) which enables to reduce both the range proof and the arithmetic circuit proof. It already has zero-knowledge properties, there is no additional information when reducing zk-WIP, and it incurs a minimal transmission cost during the reduction process. Note that zk-WIP has all characteristics of the inner product argument, such as an aggregating range proof and batch verification; thus, Bulletproofs+ is superior to Bulletproofs in all aspects.",
+        },
+        {
+          title: "Efficient Sum-Check Protocol for Convolution",
+          url: "https://ieeexplore.ieee.org/document/9638642",
+          authors:
+            "Chanyang Ju, Hyeonbum Lee, Heewon Chung, Jae Hong Seo, Sungwook Kim",
+          conference: "IEEE Access, vol. 9, pp. 164047-164059, 2021",
+          tags: ["zkp", "vc"],
+          abstract:
+            "Abstract: This paper presents a new short zero-knowledge argument for the range proof and arithmetic circuits without a trusted setup. In particular, it can achieve the shortest proof size of the proof system categories without a trusted setup. More specifically, when proving that a committed value is a positive integer less than 64 bits, except for negligible error in the 128-bit security parameter, the proof size is 576 bytes long, which is 85.7% the size of the previous shortest proof due to Bünz et al. (Bulletproofs, IEEE Security and Privacy 2018). Similarly, circuit satisfiability can be proven with less communication overhead. Nevertheless, computational overheads in both proof generation and verification are comparable with those of Bulletproofs. Bulletproofs is established as one of the important privacy-enhancing technologies for a distributed ledger due to its trustless feature and short proof size. In particular, it has been implemented and optimized in various programming languages for practical usage by independent entities since it was proposed. The essence of Bulletproofs is based on the logarithmic inner product argument with no zero-knowledge. This paper revisits Bulletproofs from the viewpoint of the first sublinear zero-knowledge argument for linear algebra due to Groth (CRYPTO 2009) and then propose Bulletproofs+, an improved variety of Bulletproofs. The main component is the zero-knowledge weighted inner product argument (zk-WIP) which enables to reduce both the range proof and the arithmetic circuit proof. It already has zero-knowledge properties, there is no additional information when reducing zk-WIP, and it incurs a minimal transmission cost during the reduction process. Note that zk-WIP has all characteristics of the inner product argument, such as an aggregating range proof and batch verification; thus, Bulletproofs+ is superior to Bulletproofs in all aspects.",
+        },
+        {
+          title:
+            "Homomorphic Comparison for Point Numbers with User-Controllable Precision and Its Applications",
+          url: "https://www.mdpi.com/2073-8994/12/5/788",
+          authors: "Heewon Chung, Myungsun Kim, A. Badawi, Khin Mi Mi Aung",
+          conference: "Symmetry, 12(5):788, 2020",
+          tags: ["fhe"],
+          abstract:
+            "Abstract: This work is mainly interested in ensuring users' privacy in asymmetric computing, such as cloud computing. In particular, because lots of user data are expressed in non-integer data types, privacy-enhanced applications built on fully homomorphic encryption (FHE) must support real-valued comparisons due to the ubiquity of real numbers in real-world applications. However, as FHE schemes operate in specific domains, such as that of congruent integers, most FHE-based solutions focus only on homomorphic comparisons of integers. Attempts to overcome this barrier can be grouped into two classes. Given point numbers in the form of approximate real numbers, one class of solution uses a special-purpose encoding to represent the point numbers, whereas the other class constructs a dedicated FHE scheme to encrypt point numbers directly. The solutions in the former class may provide depth-efficient arithmetic (i.e., logarithmic depth in the size of the data), but not depth-efficient comparisons between FHE-encrypted point numbers. The second class may avoid this problem, but it requires the precision of point numbers to be determined before the FHE setup is run. Thus, the precision of the data cannot be controlled once the setup is complete. Furthermore, because the precision accuracy is closely related to the sizes of the encryption parameters, increasing the precision of point numbers results in increasing the sizes of the FHE parameters, which increases the sizes of the public keys and ciphertexts, incurring more expensive computation and storage. Unfortunately, this problem also occurs in many of the proposals that fall into the first class. In this work, we are interested in depth-efficient comparison over FHE-encrypted point numbers. In particular, we focus on enabling the precision of point numbers to be manipulated after the system parameters of the underlying FHE scheme are determined, and even after the point numbers are encrypted. To this end, we encode point numbers in continued fraction (CF) form. Therefore, our work lies in the first class of solutions, except that our CF-based approach allows depth-efficient homomorphic comparisons (more precisely, the complexity of the comparison is $O(log x+log n)$ for a number of partial quotients $n$ and their bit length $x$, which is normally small) while allowing users to determine the precision of the encrypted point numbers when running their applications. We develop several useful applications (e.g., sorting) that leverage our CF-based homomorphic comparisons.",
+        },
+        {
+          title:
+            "Encoding of Rational Numbers and Their Homomorphic Computations for FHE-Based Applications",
+          url: "https://www.worldscientific.com/doi/abs/10.1142/S0129054118500193",
+          authors: "Heewon Chung, Myungsun Kim",
+          conference:
+            "International Journal of Foundations of Computer Science, vol. 29, No. 06, pp. 1023-1044, 2018",
+          tags: ["fhe"],
+          abstract:
+            "Abstract: This work addresses a basic problem of security systems that operate on very sensitive information. Specifically, we are interested in the problem of privately handling numeric data represented by rational numbers (e.g., medical records). Fully homomorphic encryption (FHE) is one of the natural and powerful tools for ensuring privacy of sensitive data, while allowing complicated computations on the data. However, because the native plaintext domain of known FHE schemes is restricted to a set of quite small integers, it is not easy to obtain efficient algorithms for encrypted rational numbers in terms of space and computation costs. For example, the naïve decimal representation considerably restricts the choice of parameters in employing an FHE scheme, particularly the plaintext size. <br> Our basic strategy is to alleviate this inefficiency by using a different representation of rational numbers instead of naïve expressions. In this work we express rational numbers as continued fractions. Because continued fractions enable us to represent rational numbers as a sequence of integers, we can use a plaintext space with a small size while preserving the same quality of precision. However, this encoding technique requires performing very complex arithmetic operations, such as division and modular reduction. Theoretically, FHE allows the evaluation of any function, including modular reduction at encrypted data, but it requires a Boolean circuit of very high degree to be constructed. Hence, the primary contribution of this work is developing an approach to solve this efficiency problem using homomorphic operations with small degrees.",
+        },
+      ];
 
-function filterPapers(tag, btn) {
-    const items = document.querySelectorAll('.paper-item');
-    if (btn) {
-        document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-    }
-    items.forEach(item => {
-        if (tag === 'all' || item.dataset.tags.includes(tag)) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
+      function filterPapers(tag, btn) {
+        const items = document.querySelectorAll(".paper-item");
+        if (btn) {
+          document
+            .querySelectorAll(".filter-button")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
         }
-    });
-}
+        items.forEach((item) => {
+          if (tag === "all" || item.dataset.tags.includes(tag)) {
+            item.style.display = "";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      }
 
-let lastTag = null;
+      let lastTag = null;
 
-document.addEventListener('DOMContentLoaded', () => {
-    const papersContainer = document.getElementById('papers-container');
-    paperData.forEach((paper, idx) => {
-        const item = document.createElement('li');
-        item.className = 'paper-item';
-        item.dataset.tags = paper.tags.join(' ');
-        item.innerHTML = `
+      document.addEventListener("DOMContentLoaded", () => {
+        const papersContainer = document.getElementById("papers-container");
+        paperData.forEach((paper, idx) => {
+          const item = document.createElement("li");
+          item.className = "paper-item";
+          item.dataset.tags = paper.tags.join(" ");
+          item.innerHTML = `
             <div class="paper-header">
-                <a class="paper-title" href="${paper.url}" target="_blank" rel="noopener">${paper.title}</a>
-                <span class="authors">${paper.authors.replace('Heewon Chung', '<span class=\'highlight\'>Heewon Chung</span>')}</span>
+                <a class="paper-title" href="${
+                  paper.url
+                }" target="_blank" rel="noopener">${paper.title}</a>
+                <span class="authors">${paper.authors.replace(
+                  "Heewon Chung",
+                  "<span class='highlight'>Heewon Chung</span>"
+                )}</span>
                 <span class="conference">${paper.conference}</span>
                 <div class="tags">
-                    ${paper.tags.map(t => `<span class="tag">${t.toUpperCase()}</span>`).join(' ')}
+                    ${paper.tags
+                      .map((t) => `<span class="tag">${t.toUpperCase()}</span>`)
+                      .join(" ")}
                 </div>
             </div>
             <div class="paper-details">
                 <div class="details-content">
-                    <p class="abstract"><strong>Abstract:</strong><br>${paper.abstract.replace(/^Abstract:\s*/i, '')}</p>
+                    <p class="abstract"><strong>Abstract:</strong><br>${paper.abstract.replace(
+                      /^Abstract:\s*/i,
+                      ""
+                    )}</p>
                 </div>
             </div>
         `;
-        item.addEventListener('click', (e) => {
+          item.addEventListener("click", (e) => {
             // 태그 클릭 시에는 아코디언 토글 없이 필터만 동작
-            if (e.target.classList.contains('tag')) {
-                const tag = e.target.textContent.trim().toLowerCase();
-                if (lastTag === tag) {
-                    filterPapers('all');
-                    lastTag = null;
-                    document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
-                    document.querySelector('.filter-button[onclick*="all"]')?.classList.add('active');
-                } else {
-                    filterPapers(tag);
-                    lastTag = tag;
-                    document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('active'));
-                    const btn = Array.from(document.querySelectorAll('.filter-button')).find(b => b.textContent.trim().toLowerCase() === tag);
-                    if (btn) btn.classList.add('active');
-                }
-                return;
+            if (e.target.classList.contains("tag")) {
+              const tag = e.target.textContent.trim().toLowerCase();
+              if (lastTag === tag) {
+                filterPapers("all");
+                lastTag = null;
+                document
+                  .querySelectorAll(".filter-button")
+                  .forEach((b) => b.classList.remove("active"));
+                document
+                  .querySelector('.filter-button[onclick*="all"]')
+                  ?.classList.add("active");
+              } else {
+                filterPapers(tag);
+                lastTag = tag;
+                document
+                  .querySelectorAll(".filter-button")
+                  .forEach((b) => b.classList.remove("active"));
+                const btn = Array.from(
+                  document.querySelectorAll(".filter-button")
+                ).find((b) => b.textContent.trim().toLowerCase() === tag);
+                if (btn) btn.classList.add("active");
+              }
+              return;
             }
             // 논문 제목(링크) 클릭 시에는 아코디언 토글 없이 링크만 동작
-            if (e.target.classList.contains('paper-title')) return;
-            const currentlyActive = document.querySelector('.paper-item.active');
+            if (e.target.classList.contains("paper-title")) return;
+            const currentlyActive =
+              document.querySelector(".paper-item.active");
             if (currentlyActive && currentlyActive !== item) {
-                currentlyActive.classList.remove('active');
+              currentlyActive.classList.remove("active");
             }
-            item.classList.toggle('active');
+            item.classList.toggle("active");
+          });
+          papersContainer.appendChild(item);
         });
-        papersContainer.appendChild(item);
-    });
-    
-});
-</script>
-</body>
+      });
+    </script>
+  </body>
 </html>
+
     </div>
     
     
