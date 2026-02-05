@@ -1,159 +1,439 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Research</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    :root {
-      --bg-color: #22272e;
-      --text-color: #e0e0e0;
-      --card-bg: #23272b;
-      --accent-color: #4da6ff;
-      --secondary-color: #7fdde9;
-      --muted-color: #b0b0b0;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Research</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --bg-color: #22272e;
+        --text-color: #e0e0e0;
+        --card-bg: #23272b;
+        --card-hover-bg: #282c34;
+        --accent-color: #4da6ff;
+        --secondary-color: #7fdde9;
+        --muted-color: #b0b0b0;
+        --border-color: #444;
+      }
 
-    html, body {
-      background: #22272e !important;
-      height: 100%;
-      min-height: 100%;
-    }
+      html,
+      body {
+        background: #22272e !important;
+        height: 100%;
+        min-height: 100%;
+      }
 
-    body {
-      font-family: 'Noto Sans KR', 'Segoe UI', Arial, sans-serif;
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-    }
+      body {
+        font-family: "Noto Sans KR", "Segoe UI", Arial, sans-serif;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+      }
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 4px 24px 4px;
-    }
-
-    h2 {
-      color: #fff;
-      font-size: 1.8rem;
-      letter-spacing: -1px;
-      margin-bottom: 1.5rem;
-    }
-
-    .intro {
-      color: var(--text-color);
-      font-size: 0.98rem;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 16px 14px 12px 14px;
-      margin-bottom: 14px;
-      transition: box-shadow 0.2s, background 0.3s;
-    }
-
-    .card-title {
-      color: var(--accent-color);
-      font-size: 1.05rem;
-      font-weight: bold;
-      margin-bottom: 0.2rem;
-    }
-
-    .card-desc {
-      color: var(--text-color);
-      font-size: 0.98rem;
-      line-height: 1.5;
-    }
-
-    .section-title {
-      color: #bdd3de;
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-top: 2.5rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .section-intro {
-      color: var(--text-color);
-      font-size: 0.98rem;
-      margin-bottom: 1.2rem;
-      line-height: 1.5;
-    }
-
-    .sub-cards-container {
-      margin-left: 12px;
-    }
-
-    .sub-card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 12px 14px 10px 14px;
-      margin-bottom: 10px;
-      border-left: 3px solid var(--secondary-color);
-      transition: box-shadow 0.2s, background 0.3s;
-    }
-
-    .sub-card-title {
-      color: var(--secondary-color);
-      font-size: 1rem;
-      font-weight: bold;
-      margin-bottom: 0.2rem;
-    }
-
-    @media (max-width: 768px) {
       .container {
-        padding: 0 16px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 4px 24px 4px;
       }
-      .sub-cards-container {
-        margin-left: 0;
+
+      h2 {
+        color: #fff;
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+        margin-bottom: 1.5rem;
       }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h2>Research</h2>
-    <p class="intro">My research interests broadly encompass cryptography, with a particular emphasis on privacy-enhancing technologies and the design of efficient cryptographic protocols for real-world applications.</p>
 
-    <div class="card">
-      <div class="card-title">Zero-Knowledge Proofs & Verifiable Computation</div>
-      <div class="card-desc">Zero-knowledge proofs enable proving statements without revealing underlying information, providing succinct and efficient verification. I focus on developing practical zero-knowledge proof systems like Bulletproofs+ that achieve both efficiency and security. These techniques are fundamental to blockchain scalability and privacy-preserving applications.</div>
-    </div>
+      .intro {
+        color: var(--text-color);
+        font-size: 0.98rem;
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
 
-    <div class="card">
-      <div class="card-title">Blockchains & Privacy-Preserving Transactions</div>
-      <div class="card-desc">I work on improving blockchain scalability and privacy by leveraging zero-knowledge proofs and verifiable computation. My research on Bulletproofs+ was adopted by Monero in August 2020 to enhance the efficiency of confidential transactions, significantly reducing transaction sizes while preserving strong privacy guarantees. This bridges the gap between cryptographic theory and practical blockchain deployment.</div>
-    </div>
+      .topic-item {
+        background: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 16px 14px 12px 14px;
+        margin-bottom: 14px;
+        transition:
+          box-shadow 0.2s,
+          background 0.3s;
+        cursor: pointer;
+        border: none;
+      }
 
-    <div class="section-title">Secure Multi-Party Computation (MPC)</div>
-    <p class="section-intro">Secure multiparty computation enables multiple parties to jointly compute functions without revealing individual inputs. I research efficient cryptographic protocols that enable privacy-preserving collaborative computation across diverse applications.</p>
+      .topic-item:hover {
+        box-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
+        background: var(--card-hover-bg);
+      }
 
-    <div class="sub-cards-container">
-      <div class="sub-card">
-        <div class="sub-card-title">Private Set Operations (PSO)</div>
-        <div class="card-desc">Private set operations allow computing set intersections, unions, and other operations on private datasets without revealing individual elements. This is essential for privacy-preserving data analysis and collaborative filtering applications.</div>
+      .topic-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .topic-title {
+        color: var(--accent-color);
+        font-size: 1.05rem;
+        font-weight: bold;
+      }
+
+      .topic-summary {
+        font-size: 0.95rem;
+        color: var(--text-color);
+        margin-top: 6px;
+        line-height: 1.6;
+      }
+
+      .topic-details {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s,
+          padding 0.4s;
+        padding: 0 0;
+      }
+
+      .topic-item.active .topic-details {
+        max-height: 2000px;
+        padding: 1rem 0 0.5rem 0;
+      }
+
+      .details-content {
+        border-top: 1px solid var(--border-color);
+        padding-top: 1.2rem;
+      }
+
+      .section-heading {
+        color: var(--secondary-color);
+        font-size: 0.92rem;
+        font-weight: bold;
+        margin-top: 0.8rem;
+        margin-bottom: 0.3rem;
+        padding-left: 10px;
+        border-left: 3px solid var(--secondary-color);
+      }
+
+      .section-heading:first-child {
+        margin-top: 0;
+      }
+
+      .details-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0.3rem 0;
+        color: var(--text-color);
+      }
+
+      .details-content ul {
+        margin: 0.3rem 0 0.2rem 1.2rem;
+        padding: 0;
+        font-size: 0.93rem;
+        line-height: 1.6;
+        color: var(--text-color);
+      }
+
+      .details-content ul li {
+        margin-bottom: 0.2rem;
+      }
+
+      .keyword {
+        color: #ffcc00;
+        font-weight: bold;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 0 12px 24px 12px;
+        }
+        .topic-item {
+          padding: 14px 10px 10px 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Research</h2>
+      <p class="intro">
+        My research interests broadly encompass cryptography, with a particular
+        emphasis on privacy-enhancing technologies and the design of efficient
+        cryptographic protocols for real-world applications.
+      </p>
+
+      <!-- Topic 1: Zero-Knowledge Proofs & Verifiable Computation -->
+      <div class="topic-item">
+        <div class="topic-header">
+          <div class="topic-title">
+            Zero-Knowledge Proofs &amp; Verifiable Computation
+          </div>
+          <div class="topic-summary">
+            Zero-knowledge proofs allow a prover to convince a verifier that a
+            statement is true without revealing any information beyond the
+            validity of the statement itself. Verifiable computation extends
+            this: a computationally weak client can delegate expensive
+            operations to an untrusted server and efficiently check the result's
+            correctness.
+          </div>
+        </div>
+        <div class="topic-details">
+          <div class="details-content">
+            <div class="section-heading">Under the Hood</div>
+            <p>
+              <span class="keyword">Zero-knowledge proofs</span> system satisfy
+              three fundamental properties:
+            </p>
+            <ul>
+              <li>
+                Completeness: an honest prover always convinces the verifier.
+              </li>
+              <li>
+                Soundness: a cheating prover is caught with overwhelming
+                probability.
+              </li>
+              <li>
+                Zero-knowledge: the verifier learns nothing beyond the validity
+                of the statement.
+              </li>
+            </ul>
+            <p>
+              Succinctness, keeping proofs short and verification fast, is the
+              key design goal, often achieved through techniques like polynomial
+              commitments, inner-product arguments, and algebraic IOPs compiled
+              via the Fiat&ndash;Shamir heuristic.
+            </p>
+            <p>
+              <span class="keyword">Verifiable computation</span> builds on
+              these primitives: a client encodes its computation as an
+              arithmetic circuit or constraint system (e.g., R1CS, QAP), a
+              server evaluates the circuit and produces a succinct proof, and
+              the client verifies correctness in time far less than re-executing
+              the computation. Sum-check protocols and multilinear extensions
+              provide an alternative interactive approach with efficient
+              recursive structure.
+            </p>
+
+            <div class="section-heading">Major Directions in the Field</div>
+            <ul>
+              <li>
+                <strong>Transparent setup</strong> &mdash; eliminating trusted
+                setup ceremonies (e.g., Bulletproofs, STARKs, Halo) to remove
+                trust assumptions
+              </li>
+              <li>
+                <strong>Post-quantum security</strong> &mdash; lattice-based
+                SNARKs from RLWE/LWE assumptions, hash-based STARKs resistant to
+                quantum attacks
+              </li>
+              <li>
+                <strong>Proof aggregation &amp; recursion</strong> &mdash;
+                composing multiple proofs into a single succinct proof for batch
+                verification and incremental computation
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="sub-card">
-        <div class="sub-card-title">Private Information Retrieval (PIR)</div>
-        <div class="card-desc">Private information retrieval enables querying databases without revealing which item was requested to the database server. This protects user privacy in information retrieval systems and has applications in secure search and recommendation systems.</div>
+      <!-- Topic 2: Blockchains -->
+      <div class="topic-item">
+        <div class="topic-header">
+          <div class="topic-title">Blockchain Privacy &amp; Scalability</div>
+          <div class="topic-summary">
+            Blockchains provide decentralized consensus, but their transparency
+            creates two fundamental challenges: all transaction data is publicly
+            visible, and every node must re-execute every transaction.
+            Zero-knowledge proofs address both problems
+            simultaneously&mdash;enabling privacy by proving validity without
+            revealing data, and enabling scalability by compressing many
+            transactions into a single succinct proof.
+          </div>
+        </div>
+        <div class="topic-details">
+          <div class="details-content">
+            <div class="section-heading">Under the Hood</div>
+            <p>
+              <span class="keyword">Privacy.</span> On a standard blockchain,
+              transaction amounts, sender, and receiver are all public.
+              Zero-knowledge proofs allow a user to prove that a transaction is
+              valid (e.g., the sender has sufficient balance, the amounts are
+              non-negative) without revealing the actual values. Concretely,
+              Pedersen commitments hide amounts while range proofs (such as
+              Bulletproofs) guarantee correctness; Zcash uses zk-SNARKs to
+              shield entire transactions including sender and receiver
+              addresses. These techniques turn an inherently transparent ledger
+              into one that supports confidential transfers.
+            </p>
+            <p>
+              <span class="keyword">Scalability.</span> In a naive blockchain,
+              every node re-executes every transaction to verify the chain.
+              ZK-rollups break this bottleneck: a rollup operator executes
+              thousands of transactions off-chain, then posts only the resulting
+              state diff and a succinct validity proof on-chain. The Layer-1
+              chain verifies one short proof instead of replaying all
+              transactions, increasing throughput by orders of magnitude while
+              inheriting the base chain's security guarantees. This approach is
+              now deployed in production systems such as zkSync, StarkNet, and
+              Polygon zkEVM.
+            </p>
+
+            <div class="section-heading">Major Directions in the Field</div>
+            <ul>
+              <li>
+                <strong>Confidential transactions</strong> &mdash; shorter range
+                proofs, stealth addresses, and private smart contract execution
+                without trusted setup
+              </li>
+              <li>
+                <strong>ZK-rollups</strong> &mdash; general-purpose zkEVMs,
+                recursive proof composition for deeper compression, and
+                decentralized prover networks
+              </li>
+              <li>
+                <strong>Cross-chain interoperability</strong> &mdash;
+                light-client proofs and bridging protocols that use ZKPs to
+                verify state across heterogeneous chains
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="sub-card">
-        <div class="sub-card-title">Function Secret Sharing (FSS)</div>
-        <div class="card-desc">Function secret sharing splits functions into secret shares that can be distributed across multiple parties for evaluation without revealing the function itself. This enables efficient distributed computation and privacy-preserving function evaluation.</div>
+      <!-- Topic 3: Secure Multiparty Computation -->
+      <div class="topic-item">
+        <div class="topic-header">
+          <div class="topic-title">Secure Multiparty Computation (MPC)</div>
+          <div class="topic-summary">
+            Secure multiparty computation enables multiple parties to jointly
+            evaluate a function over their private inputs such that each party
+            learns only the output&mdash;nothing about the other parties' inputs
+            beyond what the output reveals.
+          </div>
+        </div>
+        <div class="topic-details">
+          <div class="details-content">
+            <div class="section-heading">Under the Hood</div>
+            <p>
+              MPC protocols typically rely on secret sharing (e.g., Shamir's
+              scheme) or garbled circuits to distribute computation across
+              parties. Each party holds only a share of the data, and the
+              protocol ensures that intermediate values remain hidden throughout
+              the computation. The security guarantee is that even if a subset
+              of parties collude, they learn nothing beyond the agreed-upon
+              output.
+            </p>
+            <p>Key sub-areas include:</p>
+            <ul>
+              <li>
+                <span class="keyword">Private Set Operations (PSO)</span>
+                &mdash; protocols for computing intersections, unions, and
+                cardinalities over private datasets without revealing individual
+                elements. Techniques include oblivious polynomial evaluation,
+                cryptographic accumulators, and hash-based approaches.
+              </li>
+              <li>
+                <span class="keyword">Private Information Retrieval (PIR)</span>
+                &mdash; allows a client to query a database and retrieve an
+                entry without the server learning which entry was requested.
+                Constructions range from information-theoretic multi-server PIR
+                to computational single-server PIR based on lattice assumptions
+                (LWE/RLWE).
+              </li>
+              <li>
+                <span class="keyword">Function Secret Sharing (FSS)</span>
+                &mdash; splits a function (e.g., point function, interval
+                function) into compact secret keys distributed to servers. Each
+                server locally evaluates its share on any input, and the outputs
+                combine to yield the original function's value&mdash;enabling
+                lightweight two-server PIR and distributed computation.
+              </li>
+            </ul>
+
+            <div class="section-heading">Major Directions in the Field</div>
+            <ul>
+              <li>
+                <strong>Communication efficiency</strong> &mdash; reducing round
+                complexity and bandwidth in PSO and PIR protocols
+              </li>
+              <li>
+                <strong>Lattice-based constructions</strong> &mdash;
+                sublinear-communication PIR from MLWE/RLWE and post-quantum
+                secure MPC
+              </li>
+              <li>
+                <strong>Delegated computation</strong> &mdash; outsourcing set
+                operations and database queries to untrusted cloud servers with
+                verifiable correctness
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topic 4: Fully Homomorphic Encryption -->
+      <div class="topic-item">
+        <div class="topic-header">
+          <div class="topic-title">Fully Homomorphic Encryption (FHE)</div>
+          <div class="topic-summary">
+            Fully homomorphic encryption allows arbitrary computation on
+            encrypted data without decryption. A cloud server can process
+            ciphertexts and return an encrypted result that, upon decryption,
+            matches what would have been computed on the plaintexts.
+          </div>
+        </div>
+        <div class="topic-details">
+          <div class="details-content">
+            <div class="section-heading">Under the Hood</div>
+            <p>
+              FHE schemes are built on lattice-based hardness assumptions,
+              primarily the Learning with Errors (LWE) and Ring-LWE problems. A
+              ciphertext carries a small amount of "noise," and each homomorphic
+              operation increases this noise. The central technical challenge is
+              noise management: Gentry's bootstrapping technique refreshes a
+              ciphertext by homomorphically evaluating the decryption circuit,
+              resetting the noise level and enabling unlimited computation
+              depth. Modern schemes (BGV, BFV, CKKS, TFHE) optimize this
+              trade-off for different use cases&mdash;exact integer arithmetic,
+              approximate real-number arithmetic, or fast Boolean gate
+              evaluation.
+            </p>
+
+            <div class="section-heading">Major Directions in the Field</div>
+            <ul>
+              <li>
+                <strong>Efficient bootstrapping</strong> &mdash; reducing the
+                computational cost of noise refresh to make FHE practical for
+                deep circuits
+              </li>
+              <li>
+                <strong>Approximate arithmetic</strong> &mdash;
+                privacy-preserving machine learning, statistical analysis, and
+                neural network inference over encrypted data
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="card" style="margin-top: 20px;">
-      <div class="card-title">Fully Homomorphic Encryption (FHE)</div>
-      <div class="card-desc">Fully homomorphic encryption enables computation on encrypted data without decryption, allowing cloud computing and privacy-preserving data analysis. My Ph.D. research focused on FHE and its practical applications, exploring techniques to improve efficiency and expand applicability across various domains including secure cloud computing and privacy-preserving machine learning.</div>
-    </div>
-  </div>
-</body>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const items = document.querySelectorAll(".topic-item");
+        items.forEach((item) => {
+          item.addEventListener("click", function (e) {
+            // Don't toggle if clicking a link
+            if (e.target.tagName === "A") return;
+            const currentlyActive =
+              document.querySelector(".topic-item.active");
+            if (currentlyActive && currentlyActive !== item) {
+              currentlyActive.classList.remove("active");
+            }
+            item.classList.toggle("active");
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
