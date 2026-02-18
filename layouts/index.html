@@ -1,42 +1,57 @@
 {{ define "main" }}
-<div style="display: flex; gap: 20px; align-items: center;">
-  <img src="/images/profile.jpg" alt="Heewon Chung" 
-  style="width: 100%; max-width: 170px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); margin-top: 15px;">
-  
-  <div style="flex: 1;">
-      <h1 style="margin-bottom: 5px;">Heewon Chung</h1>
-      <p style="font-size: 1.1em; font-weight: bold; color: #9f9c9c;">Assistant Professor</p>
-      <p>Department of Software Engineering, Jeonbuk National University</p>
-      <p><strong>Research Areas:</strong> Zero-Knowledge Proofs & Verifiable Computation, Blockchains, Secure Multiparty Computation, Fully Homomorphic Encryption</p>
-      <p><strong>Office:</strong> 공대5호관 506호 </p>
-      <p><strong>Contact:</strong>  
-        ✉️ <a href="mailto:heewonchung@jbnu.ac.kr" style="text-decoration: none; color: #007bff;"> heewonchung@jbnu.ac.kr </a> &nbsp;|&nbsp;  
-        📅 <a href="https://fantastical.app/heewonchung/" style="text-decoration: none; color: #007bff;"> Available Meeting Time </a>
-      </p>
+<style>
+  .home-container a.home-link {
+    text-decoration: none;
+    color: var(--accent-color, #4da6ff);
+  }
+  .home-container a.home-link:hover {
+    text-decoration: underline;
+  }
+  .home-subtitle {
+    color: var(--muted-color, #9f9c9c);
+  }
+</style>
+
+<div class="home-container">
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <img src="/images/profile.jpg" alt="Heewon Chung"
+    style="width: 100%; max-width: 170px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.15); margin-top: 15px;">
+
+    <div style="flex: 1;">
+        <h1 style="margin-bottom: 5px;">Heewon Chung</h1>
+        <p class="home-subtitle" style="font-size: 1.1em; font-weight: bold;">Assistant Professor</p>
+        <p>Department of Software Engineering, Jeonbuk National University</p>
+        <p><strong>Research Areas:</strong> Zero-Knowledge Proofs & Verifiable Computation, Blockchains, Secure Multiparty Computation, Fully Homomorphic Encryption</p>
+        <p><strong>Office:</strong> 공대5호관 506호 </p>
+        <p><strong>Contact:</strong>
+          ✉️ <a class="home-link" href="mailto:heewonchung@jbnu.ac.kr"> heewonchung@jbnu.ac.kr </a> &nbsp;|&nbsp;
+          📅 <a class="home-link" href="https://fantastical.app/heewonchung/"> Available Meeting Time </a>
+        </p>
+    </div>
   </div>
+
+  <p>
+    I am an Assistant Professor in the Department of Software Engineering at Jeonbuk National University, a position I have held since March 2025.
+    I received my Ph.D. in Mathematics from Seoul National University under the supervision of Prof. Jung Hee Cheon, with a focus on fully homomorphic encryption and its practical applications.
+  </p>
+
+  <p>
+    My research interests broadly encompass cryptography, with a particular emphasis on privacy-enhancing technologies such as secure multiparty computation, fully homomorphic encryption, and zero-knowledge proofs.
+    I am especially interested in private set operations, the theoretical foundations of blockchain security, and the design of efficient cryptographic protocols for real-world applications.
+    Additionally, I work on improving blockchain scalability by leveraging zero-knowledge proofs and verifiable computation, striving to bridge the gap between cryptographic theory and practical deployment.
+  </p>
+
+  <p>
+    One of my notable research contributions, <strong>Bulletproofs+</strong>, was adopted by
+    <a class="home-link" href="https://x.com/monero/status/1558525849548251136" target="_blank">Monero in August 2020 </a> to enhance the efficiency of confidential transactions.
+    This improvement significantly reduced transaction sizes while preserving strong privacy guarantees, marking a crucial advancement in privacy-preserving blockchain technology.
+    I continue to explore new techniques to optimize cryptographic protocols and expand their applicability across various domains.
+  </p>
+
+  <p>
+    For more details, please refer to my
+    <a class="home-link" href="/cv/CV_Heewon.pdf" target="_blank">CV</a>.
+  </p>
 </div>
-
-<p>
-  I am an Assistant Professor in the Department of Software Engineering at Jeonbuk National University, a position I have held since March 2025. 
-  I received my Ph.D. in Mathematics from Seoul National University under the supervision of Prof. Jung Hee Cheon, with a focus on fully homomorphic encryption and its practical applications.
-</p>
-
-<p>
-  My research interests broadly encompass cryptography, with a particular emphasis on privacy-enhancing technologies such as secure multiparty computation, fully homomorphic encryption, and zero-knowledge proofs. 
-  I am especially interested in private set operations, the theoretical foundations of blockchain security, and the design of efficient cryptographic protocols for real-world applications. 
-  Additionally, I work on improving blockchain scalability by leveraging zero-knowledge proofs and verifiable computation, striving to bridge the gap between cryptographic theory and practical deployment.
-</p>
-
-<p>
-  One of my notable research contributions, <strong>Bulletproofs+</strong>, was adopted by 
-  <a href="https://x.com/monero/status/1558525849548251136" target="_blank" style="text-decoration: none; color: #007bff;">Monero in August 2020 </a> to enhance the efficiency of confidential transactions. 
-  This improvement significantly reduced transaction sizes while preserving strong privacy guarantees, marking a crucial advancement in privacy-preserving blockchain technology. 
-  I continue to explore new techniques to optimize cryptographic protocols and expand their applicability across various domains.
-</p>
-
-<p>
-  For more details, please refer to my 
-  <a href="/cv/CV_Heewon.pdf" style="text-decoration: none; color: #007bff;" target="_blank">CV</a>.
-</p>
 
 {{ end }}

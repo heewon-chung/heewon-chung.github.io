@@ -1,238 +1,310 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Teaching</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        /* 다크모드 전용 스타일 */
-        :root {
-            --bg-color: #22272e;
-            --text-color: #e0e0e0;
-            --card-bg: #23272b;
-            --card-hover-bg: #282c34;
-            --accent-color: #4da6ff;
-            --secondary-color: #7fdde9;
-            --muted-color: #b0b0b0;
-            --border-color: #444;
-            --tag-bg: #333;
-            --highlight-color: #ffcc00;
-        }
-        
-        body {
-            font-family: 'Noto Sans KR', 'Segoe UI', Arial, sans-serif;
-            background: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
+      :root {
+        --bg-color: #22272e;
+        --text-color: #e0e0e0;
+        --card-bg: #23272b;
+        --card-hover-bg: #282c34;
+        --accent-color: #4da6ff;
+        --secondary-color: #7fdde9;
+        --muted-color: #b0b0b0;
+        --border-color: #444;
+        --tag-bg: #333;
+        --highlight-color: #ffcc00;
+        --card-hover-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
+      }
+
+      .light-mode {
+        --bg-color: #ffffff;
+        --text-color: #333;
+        --card-bg: #f5f7fa;
+        --card-hover-bg: #e8edf2;
+        --accent-color: #0066cc;
+        --secondary-color: #0a8993;
+        --muted-color: #666;
+        --border-color: #ddd;
+        --tag-bg: #e9ecef;
+        --highlight-color: #d48800;
+        --card-hover-shadow: 0 4px 16px rgba(10, 137, 147, 0.12);
+      }
+
+      body {
+        font-family: "Noto Sans KR", "Segoe UI", Arial, sans-serif;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+      }
+      h2 {
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 4px 24px 4px;
+      }
+      .courses-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .course-item {
+        background: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 16px 14px 12px 14px;
+        margin-bottom: 14px;
+        transition:
+          box-shadow 0.2s,
+          background 0.3s;
+        cursor: pointer;
+        border: none;
+      }
+      .course-item:hover {
+        box-shadow: var(--card-hover-shadow);
+        background: var(--card-hover-bg);
+      }
+      .course-header {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+      .course-subtitle {
+        font-size: 0.8rem;
+        color: var(--muted-color);
+        font-style: italic;
+        margin-left: 0.5rem;
+      }
+      .course-semesters {
+        margin-top: 0.3rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.2rem;
+      }
+      .semester-tag {
+        background: var(--tag-bg);
+        color: var(--secondary-color);
+        border-radius: 4px;
+        padding: 1px 6px;
+        font-size: 0.7rem;
+        margin-right: 4px;
+        margin-bottom: 2px;
+      }
+      .course-details {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s,
+          padding 0.4s;
+        padding: 0 0;
+      }
+      .course-item.active .course-details {
+        max-height: 1000px;
+        padding: 1rem 0 0.5rem 0;
+      }
+      .details-content {
+        border-top: 1px solid var(--border-color);
+        padding-top: 1.2rem;
+      }
+      .course-description {
+        font-size: 1rem;
+        color: var(--text-color);
+        margin-bottom: 1.2rem;
+      }
+      .topics-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--highlight-color);
+        margin-bottom: 0.75rem;
+      }
+      .topics-list {
+        list-style: none;
+        padding: 0;
+      }
+      .topics-list li {
+        color: var(--muted-color);
+        margin-bottom: 0.5rem;
+        padding-left: 1.25rem;
+        position: relative;
+      }
+      .topics-list li::before {
+        content: "›";
+        color: var(--highlight-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+      @media (max-width: 600px) {
+        .container {
+          padding: 0 12px 24px 12px;
         }
         h2 {
-            color: var(--text-color, #333333);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            letter-spacing: -1px;
+          font-size: 1.2rem;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 4px 24px 4px;
-        }
-        .courses-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .course-item {
-            background: var(--card-bg, #f8f9fa);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 16px 14px 12px 14px;
-            margin-bottom: 14px;
-            transition: box-shadow 0.2s, background 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-        .course-item:hover {
-            box-shadow: 0 4px 16px rgba(127,221,233,0.12);
-            background: var(--card-hover-bg, #e9ecef);
-        }
-        .course-header {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--accent-color, #0056b3);
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        .course-subtitle {
-            font-size: 0.8rem;
-            color: var(--muted-color, #6c757d);
-            font-style: italic;
-            margin-left: 0.5rem;
-        }
-        .course-semesters {
-            margin-top: 0.3rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.2rem;
-        }
-        .semester-tag {
-            background: var(--tag-bg, #e9ecef);
-            color: var(--secondary-color, #17a2b8);
-            border-radius: 4px;
-            padding: 1px 6px;
-            font-size: 0.7rem;
-            margin-right: 4px;
-            margin-bottom: 2px;
-        }
-        .course-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s, padding 0.4s;
-            padding: 0 0;
-        }
-        .course-item.active .course-details {
-            max-height: 1000px;
-            padding: 1rem 0 0.5rem 0;
-        }
-        .details-content {
-            border-top: 1px solid var(--border-color, #dee2e6);
-            padding-top: 1.2rem;
-        }
-        .course-description {
-            font-size: 1rem;
-            color: var(--text-color, #333333);
-            margin-bottom: 1.2rem;
-        }
-        .topics-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--highlight-color, #f57c00);
-            margin-bottom: 0.75rem;
-        }
-        .topics-list {
-            list-style: none;
-            padding: 0;
-        }
-        .topics-list li {
-            color: var(--muted-color, #6c757d);
-            margin-bottom: 0.5rem;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-        .topics-list li::before {
-            content: '›';
-            color: var(--highlight-color, #f57c00);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-        @media (max-width: 600px) {
-            .container { padding: 6px; }
-            h2 { font-size: 1.2rem; }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h2>Teaching</h2>
-        <ul class="courses-list">
-            <!-- JS로 동적 생성 -->
-        </ul>
+      <h2>Teaching</h2>
+      <ul class="courses-list">
+        <!-- JS로 동적 생성 -->
+      </ul>
     </div>
     <script>
-        const courseData = {
-            digital: {
-                title: "디지털 공학",
-                subtitle: "Digital Engineering",
-                code: "SWE2003",
-                semesters: ["2025 Spring"],
-                description: "디지털 시스템의 기본 원리와 설계 방법을 학습",
-                topics: [
-                    "논리 게이트와 불 대수",
-                    "조합논리회로 설계",
-                    "순차논리회로와 플립플롭",
-                    "카운터와 레지스터",
-                    "메모리와 주변장치",
-                ]
-            },
-            'data-analysis': {
-                title: "데이터 분석 실무",
-                subtitle: "Data Analysis Practice",
-                code: "SWE4005",
-                semesters: ["2025 Spring"],
-                description: "실무에서 사용되는 데이터 분석 방법론과 도구를 학습합니다. 실제 데이터를 활용한 분석 프로젝트를 수행합니다.",
-                topics: [
-                    "데이터 수집과 전처리",
-                    "탐색적 데이터 분석(EDA)",
-                    "통계적 분석 방법",
-                    "머신러닝 기초 알고리즘",
-                    "데이터 시각화 기법",
-                    "Python/R을 활용한 분석",
-                    "실무 데이터 분석 프로젝트"
-                ]
-            },
-            // java: {
-            //     title: "Java 프로그래밍",
-            //     subtitle: "Java Programming",
-            //     code: "SWE3002",
-            //     semesters: ["2025 Fall"],
-            //     description: "객체지향 프로그래밍 언어인 Java의 기본 문법과 프로그래밍 기법을 학습합니다. 실습을 통해 실제 프로그램 개발 능력을 기릅니다.",
-            //     topics: [
-            //         "Java 언어의 기본 문법",
-            //         "객체지향 프로그래밍 개념",
-            //         "클래스와 객체, 상속과 다형성",
-            //         "인터페이스와 추상 클래스",
-            //         "예외 처리와 파일 입출력",
-            //         "컬렉션 프레임워크",
-            //         "GUI 프로그래밍 기초"
-            //     ]
-            // },
-            // probability: {
-            //     title: "확률과 통계",
-            //     subtitle: "Probability and Statistics",
-            //     code: "MATH2001",
-            //     semesters: ["2025 Fall"],
-            //     description: "확률론과 통계학의 기본 개념을 다루는 기초 수학 과목입니다. 확률 분포, 통계적 추론, 가설 검정 등을 학습하여 데이터 분석의 기초를 마련합니다.",
-            //     topics: [
-            //         "확률의 기본 개념과 공리",
-            //         "확률 변수와 확률 분포",
-            //         "이항분포, 정규분포, 포아송분포",
-            //         "표본 추출과 표본 분포",
-            //         "점추정과 구간추정",
-            //         "가설 검정과 유의성 검정",
-            //         "상관관계와 회귀분석"
-            //     ]
-            // },
-            blockchain: {
-                title: "블록체인 실무 응용",
-                subtitle: "Blockchain Applications",
-                code: "SWE4010",
-                semesters: ["2020 Spring", "2020 Fall", "2021 Spring", "2021 Fall", "2022 Spring", "2022 Fall", "2023 Spring", "2023 Fall", "2024 Spring"],
-                description: "블록체인 기술의 기본 원리와 실무 응용 사례를 학습합니다. 스마트 컨트랙트 개발과 블록체인 플랫폼 활용을 다룹니다.",
-                topics: [
-                    "블록체인 기술의 기본 원리",
-                    "암호화 기법과 해시 함수",
-                    "합의 알고리즘과 네트워크 구조",
-                    "스마트 컨트랙트 개발",
-                    "이더리움과 솔리디티",
-                    "DeFi와 NFT 응용",
-                    "블록체인 보안과 프라이버시"
-                ]
-            },
-        };
+      // Gokarna theme dark/light mode sync
+      function syncTheme() {
+        const darkCss = document.getElementById('dark-theme');
+        const isDark = !darkCss || !darkCss.disabled;
+        document.documentElement.classList.toggle('light-mode', !isDark);
+      }
+      syncTheme();
+      const darkCssEl = document.getElementById('dark-theme');
+      if (darkCssEl) {
+        new MutationObserver(syncTheme).observe(darkCssEl, { attributes: true, attributeFilter: ['disabled'] });
+      }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const coursesList = document.querySelector('.courses-list');
-            for (const key in courseData) {
-                const course = courseData[key];
-                const item = document.createElement('li');
-                item.className = 'course-item';
-                item.dataset.courseKey = key;
-                const semestersHtml = course.semesters.map(s => `<span class="semester-tag">${s}</span>`).join('');
-                const topicsHtml = course.topics.map(t => `<li>${t}</li>`).join('');
-                item.innerHTML = `
+      const courseData = {
+        java1: {
+          title: "Java프로그래밍 1",
+          subtitle: "Java Programming 1",
+          semesters: ["2026 Spring"],
+          description:
+            "Java 언어의 기본 문법과 객체지향 프로그래밍의 핵심 개념을 학습합니다.",
+          topics: [
+            "Java 언어의 기본 문법과 자료형",
+            "조건문, 반복문, 배열",
+            "클래스와 객체",
+            "상속과 다형성",
+            "인터페이스와 추상 클래스",
+            "예외 처리와 파일 입출력",
+          ],
+        },
+        "discrete-math": {
+          title: "이산수학",
+          subtitle: "Discrete Mathematics",
+          semesters: ["2026 Spring"],
+          description:
+            "컴퓨터과학의 수학적 기초가 되는 이산 구조와 논리적 사고 방법을 학습합니다.",
+          topics: [
+            "명제 논리와 술어 논리",
+            "집합, 관계, 함수",
+            "증명 기법 (귀납법, 귀류법)",
+            "그래프 이론",
+            "트리와 탐색 알고리즘",
+            "조합론과 경우의 수",
+          ],
+        },
+        java2: {
+          title: "Java프로그래밍 2",
+          subtitle: "Java Programming 2",
+          semesters: ["2025 Fall"],
+          description:
+            "Java 프로그래밍의 심화 주제를 다루며, 실무에서 활용 가능한 응용 프로그램 개발 능력을 기릅니다.",
+          topics: [
+            "컬렉션 프레임워크",
+            "제네릭과 람다 표현식",
+            "스트림 API",
+            "멀티스레드 프로그래밍",
+            "네트워크 프로그래밍",
+            "GUI 프로그래밍 (JavaFX)",
+          ],
+        },
+        probability: {
+          title: "확률 및 통계",
+          subtitle: "Probability and Statistics",
+          semesters: ["2025 Fall"],
+          description:
+            "확률론과 통계학의 기본 개념을 학습하고, 데이터 분석의 수학적 기초를 다룹니다.",
+          topics: [
+            "확률의 기본 개념과 공리",
+            "확률 변수와 확률 분포",
+            "이항분포, 정규분포, 포아송분포",
+            "표본 추출과 표본 분포",
+            "점추정과 구간추정",
+            "가설 검정과 유의성 검정",
+            "상관관계와 회귀분석",
+          ],
+        },
+        digital: {
+          title: "디지털 공학",
+          subtitle: "Digital Engineering",
+          semesters: ["2025 Spring"],
+          description:
+            "디지털 시스템의 기본 원리와 논리 회로 설계 방법을 학습합니다.",
+          topics: [
+            "논리 게이트와 불 대수",
+            "조합논리회로 설계",
+            "순차논리회로와 플립플롭",
+            "카운터와 레지스터",
+            "메모리와 주변장치",
+          ],
+        },
+        "data-analysis": {
+          title: "데이터 분석 실무",
+          subtitle: "Data Analysis Practice",
+          semesters: ["2025 Spring"],
+          description:
+            "실무에서 사용되는 데이터 분석 방법론과 도구를 학습하고, 실제 데이터를 활용한 프로젝트를 수행합니다.",
+          topics: [
+            "데이터 수집과 전처리",
+            "데이터 시각화",
+            "통계적 분석 방법",
+            "머신러닝 기초 알고리즘",
+            "데이터 시각화 기법",
+            "Python/R을 활용한 분석",
+          ],
+        },
+        blockchain: {
+          title: "블록체인 실무 응용",
+          subtitle: "Blockchain Applications",
+          semesters: [
+            "2020 Spring",
+            "2020 Fall",
+            "2021 Spring",
+            "2021 Fall",
+            "2022 Spring",
+            "2022 Fall",
+            "2023 Spring",
+            "2023 Fall",
+            "2024 Spring",
+          ],
+          description:
+            "블록체인 기술의 기본 원리와 실무 응용 사례를 학습합니다. 스마트 컨트랙트 개발과 블록체인 플랫폼 활용을 다룹니다.",
+          topics: [
+            "블록체인 기술의 기본 원리",
+            "암호화 기법과 해시 함수",
+            "합의 알고리즘과 네트워크 구조",
+            "스마트 컨트랙트 개발",
+            "이더리움과 솔리디티",
+            "DeFi와 NFT 응용",
+            "블록체인 보안과 프라이버시",
+          ],
+        },
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const coursesList = document.querySelector(".courses-list");
+        for (const key in courseData) {
+          const course = courseData[key];
+          const item = document.createElement("li");
+          item.className = "course-item";
+          item.dataset.courseKey = key;
+          const semestersHtml = course.semesters
+            .map((s) => `<span class="semester-tag">${s}</span>`)
+            .join("");
+          const topicsHtml = course.topics.map((t) => `<li>${t}</li>`).join("");
+          item.innerHTML = `
                     <div class="course-header">
                         <span class="course-title">${course.title}</span>
                         <span class="course-subtitle">${course.subtitle}</span>
@@ -250,17 +322,18 @@
                         </div>
                     </div>
                 `;
-                item.addEventListener('click', (e) => {
-                    const currentlyActive = document.querySelector('.course-item.active');
-                    if (currentlyActive && currentlyActive !== item) {
-                        currentlyActive.classList.remove('active');
-                    }
-                    item.classList.toggle('active');
-                });
-                coursesList.appendChild(item);
+          item.addEventListener("click", (e) => {
+            const currentlyActive = document.querySelector(
+              ".course-item.active",
+            );
+            if (currentlyActive && currentlyActive !== item) {
+              currentlyActive.classList.remove("active");
             }
-            
-        });
+            item.classList.toggle("active");
+          });
+          coursesList.appendChild(item);
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

@@ -19,22 +19,22 @@
 
     
     <title>Heewon Chung</title>
-    <meta name="description" content="&lt;!DOCTYPE html&gt; About About 🎓 Education 2017 Ph.D. in Mathematics Seoul National University Thesis: Secure Computation via Homomorphic Encryption
-Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
+    <meta name="description" content="&lt;!DOCTYPE html&gt; About About &#127891; Education 2017 Ph.D. in Mathematics Seoul National University Thesis: Secure Computation via Homomorphic Encryption
+Advisor: Prof. Jung …&lt;/!DOCTYPE&gt;">
     <meta name="keywords" content=''>
 
     <meta property="og:url" content="http://localhost:1313/about/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Heewon Chung">
-    <meta property="og:description" content="&lt;!DOCTYPE html&gt; About About 🎓 Education 2017 Ph.D. in Mathematics Seoul National University Thesis: Secure Computation via Homomorphic Encryption
-Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
+    <meta property="og:description" content="&lt;!DOCTYPE html&gt; About About &#127891; Education 2017 Ph.D. in Mathematics Seoul National University Thesis: Secure Computation via Homomorphic Encryption
+Advisor: Prof. Jung …&lt;/!DOCTYPE&gt;">
     <meta property="og:image" content="http://localhost:1313/">
     <meta property="og:image:secure_url" content="http://localhost:1313/">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Heewon Chung">
-    <meta name="twitter:description" content="&lt;!DOCTYPE html&gt; About About 🎓 Education 2017 Ph.D. in Mathematics Seoul National University Thesis: Secure Computation via Homomorphic Encryption
-Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
+    <meta name="twitter:description" content="&lt;!DOCTYPE html&gt; About About &#127891; Education 2017 Ph.D. in Mathematics Seoul National University Thesis: Secure Computation via Homomorphic Encryption
+Advisor: Prof. Jung …&lt;/!DOCTYPE&gt;">
     <meta property="twitter:domain" content="http://localhost:1313/about/">
     <meta property="twitter:url" content="http://localhost:1313/about/">
     <meta name="twitter:image" content="http://localhost:1313/">
@@ -167,14 +167,37 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
     <title>About</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        html, body {
-            background: #22272e !important;
-            height: 100%;
-            min-height: 100%;
+        :root {
+            --bg-color: #22272e;
+            --text-color: #e0e0e0;
+            --card-bg: #23272b;
+            --card-hover-bg: #282c34;
+            --accent-color: #4da6ff;
+            --secondary-color: #7fdde9;
+            --muted-color: #b0b0b0;
+            --border-color: #444;
+            --tag-bg: #333;
+            --highlight-color: #ffcc00;
+            --card-hover-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
         }
+
+        .light-mode {
+            --bg-color: #ffffff;
+            --text-color: #333;
+            --card-bg: #f5f7fa;
+            --card-hover-bg: #e8edf2;
+            --accent-color: #0066cc;
+            --secondary-color: #0a8993;
+            --muted-color: #666;
+            --border-color: #ddd;
+            --tag-bg: #e9ecef;
+            --highlight-color: #d48800;
+            --card-hover-shadow: 0 4px 16px rgba(10, 137, 147, 0.12);
+        }
+
         body {
             font-family: 'Noto Sans KR', 'Segoe UI', Arial, sans-serif;
-            color: #e0e0e0;
+            color: var(--text-color);
             margin: 0;
             padding: 0;
         }
@@ -183,14 +206,14 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             margin: 0 auto;
             padding: 0 4px 24px 4px;
         }
-        h1 {
-            color: #fff;
+        h2 {
+            color: var(--text-color);
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             letter-spacing: -1px;
         }
         .section-title {
-            color: #bdd3de; /* Slate Blue for section titles */
+            color: var(--secondary-color);
             font-size: 1.2rem;
             font-weight: bold;
             margin-top: 2.5rem;
@@ -202,7 +225,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             margin: 0;
         }
         .card {
-            background: #23272b;
+            background: var(--card-bg);
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             padding: 16px 14px 12px 14px;
@@ -210,19 +233,18 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             transition: box-shadow 0.2s, background 0.3s;
         }
         .card-title {
-            color: #4da6ff;
+            color: var(--accent-color);
             font-size: 1.05rem;
             font-weight: bold;
             margin-bottom: 0.2rem;
         }
         .card-meta {
-            /* 4번 아이디어 적용: 색상 미세 조정 */
-            color: #999;
+            color: var(--muted-color);
             font-size: 0.92rem;
             margin-bottom: 0.2rem;
         }
         .card-desc {
-            color: #e0e0e0;
+            color: var(--text-color);
             font-size: 0.98rem;
             margin-bottom: 0.1rem;
         }
@@ -235,8 +257,8 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             display: inline-block;
         }
         .linkedin-btn:hover {
-            background: #7fdde9;
-            color: #23272b;
+            background: var(--secondary-color);
+            color: var(--card-bg);
         }
         .timeline {
             display: flex;
@@ -251,7 +273,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             top: 0;
             width: 2px;
             height: var(--timeline-line-height, 100%);
-            background: #4da6ff;
+            background: var(--accent-color);
         }
         .timeline-item {
             position: relative; /* For icon positioning */
@@ -286,23 +308,18 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             padding-top: 0;
             line-height: 1.5;
             font-size: 1.08rem;
-            color: #c0c8d8;
+            color: var(--muted-color);
         }
 
         .education-list .timeline-title {
             text-indent: 0;
         }
         .education-list .timeline-title::before {
-            /* content: '🎓';
-            display: inline-block;
-            width: 28px;
-            font-size: 1.1rem;
-            margin-right: 4px; */
         }
         .education-list .education-item.visible {
             opacity: 1 !important;
         }
-        /* 타임라인 학위/직장명 정렬 통일 */
+        /* timeline alignment */
         .timeline, .education-list {
             margin-left: 100px;
         }
@@ -311,7 +328,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             min-width: 180px;
             margin-right: 16px;
             text-align: left;
-            color: #c0c8d8;
+            color: var(--muted-color);
         }
         .timeline-content, .education-list .timeline-content {
             margin-left: 10px;
@@ -332,7 +349,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             margin-right: 0px;
         }
         .timeline-title {
-            color: #4da6ff;
+            color: var(--accent-color);
             font-size: 1.08rem;
             font-weight: bold;
             margin-bottom: 0.1rem;
@@ -342,7 +359,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             text-overflow: ellipsis;
         }
         .timeline-desc {
-            color: #e0e0e0;
+            color: var(--text-color);
             font-size: 0.98rem;
             line-height: 1.5;
         }
@@ -367,32 +384,31 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
         .promotion-path .promotion-step::before {
             content: '';
             position: absolute;
-            left: -20px; /* Adjusted for smaller size */
-            top: 7px;   /* Adjusted for smaller size */
-            width: 5px;   /* Smaller circle */
-            height: 5px;  /* Smaller circle */
+            left: -20px;
+            top: 7px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
-            background-color: #22272e;
-            border: 2px solid #4da6ff;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-color);
             z-index: 1;
         }
 
         .promotion-step .role {
             display: block;
             font-weight: 500;
-            color: #e0e0e0;
+            color: var(--text-color);
             font-size: 0.98rem;
         }
         .promotion-step .period {
             display: block;
             font-size: 0.85rem;
-            color: #b0b0b0;
+            color: var(--muted-color);
             margin-top: 4px;
         }
 
-        /* 학위명/학교명 분리 스타일 */
         .degree-label {
-            color: #4da6ff;
+            color: var(--accent-color);
             font-weight: bold;
             font-size: 1.08rem;
         }
@@ -400,7 +416,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             display: inline-block;
         }
         .school-label {
-            color: #bdd3de;
+            color: var(--secondary-color);
             font-style: italic;
             font-size: 1.05rem;
         }
@@ -416,12 +432,28 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
         .promotion-path {
             margin-left: 18px;
         }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 12px 24px 12px;
+            }
+            .timeline, .education-list {
+                margin-left: 40px;
+            }
+            .education-item, .timeline-item {
+                margin-left: -20px;
+            }
+            .timeline-date, .education-list .timeline-date {
+                width: 140px;
+                min-width: 140px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>About</h1>
-        <div class="section-title"><span style="font-size:1.2em; vertical-align:middle;">🎓</span> Education</div>
+        <h2>About</h2>
+        <div class="section-title"><span style="font-size:1.2em; vertical-align:middle;">&#127891;</span> Education</div>
         <div class="education-list">
             <div class="education-item">
                 <div class="education-date">
@@ -465,12 +497,12 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
                 </div>
             </div>
         </div>
-        <div class="section-title"><span style="font-size:1.2em; vertical-align:middle;">💼</span> Career</div>
+        <div class="section-title"><span style="font-size:1.2em; vertical-align:middle;">&#128188;</span> Career</div>
         <div class="timeline">
             <div class="timeline-item current">
                 <div class="timeline-date">
                     <span class="timeline-date-start">2025.03</span>
-                    <span class="timeline-date-dash">–</span>
+                    <span class="timeline-date-dash">&ndash;</span>
                     <span class="timeline-date-end">&nbsp;</span>
                 </div>
                 <div class="timeline-content">
@@ -481,7 +513,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             <div class="timeline-item">
                 <div class="timeline-date">
                     <span class="timeline-date-start">2022.01</span>
-                    <span class="timeline-date-dash">–</span>
+                    <span class="timeline-date-dash">&ndash;</span>
                     <span class="timeline-date-end">2025.02</span>
                 </div>
                 <div class="timeline-content">
@@ -492,7 +524,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             <div class="timeline-item">
                 <div class="timeline-date">
                     <span class="timeline-date-start">2020.04</span>
-                    <span class="timeline-date-dash">–</span>
+                    <span class="timeline-date-dash">&ndash;</span>
                     <span class="timeline-date-end">2021.11</span>
                 </div>
                 <div class="timeline-content">
@@ -504,7 +536,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             <div class="timeline-item">
                 <div class="timeline-date">
                     <span class="timeline-date-start">2018.08</span>
-                    <span class="timeline-date-dash">–</span>
+                    <span class="timeline-date-dash">&ndash;</span>
                     <span class="timeline-date-end">2019.03</span>
                 </div>
                 <div class="timeline-content">
@@ -515,7 +547,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
             <div class="timeline-item">
                 <div class="timeline-date">
                     <span class="timeline-date-start">2017.02</span>
-                    <span class="timeline-date-dash">–</span>
+                    <span class="timeline-date-dash">&ndash;</span>
                     <span class="timeline-date-end">2018.07</span>
                 </div>
                 <div class="timeline-content">
@@ -523,11 +555,11 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
                     <ul class="timeline-desc-list promotion-path">
                         <li class="promotion-step">
                             <span class="role">Manager, Blockchain Biz Center</span>
-                            <span class="period">2018.01 – 2018.07</span>
+                            <span class="period">2018.01 &ndash; 2018.07</span>
                         </li>
                         <li class="promotion-step">
                             <span class="role">Associate, Blockchain Center</span>
-                            <span class="period">2017.02 – 2017.12</span>
+                            <span class="period">2017.02 &ndash; 2017.12</span>
                         </li>
                     </ul>
                 </div>
@@ -539,9 +571,9 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
     </div>
 
     <script>
-    // 타임라인 애니메이션 및 선 길이 동적 조정 (최소화)
+    // Timeline animation and dynamic line height
     document.addEventListener('DOMContentLoaded', function() {
-      // 타임라인 애니메이션
+      // Timeline animation
       const items = document.querySelectorAll('.timeline-item');
       const observer = new window.IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -557,7 +589,7 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
         observer.observe(item);
       });
 
-      // 타임라인 선 길이 동적 조정
+      // Dynamic timeline line height
       const timeline = document.querySelector('.timeline');
       const timelineItems = timeline.querySelectorAll('.timeline-item');
       if (timelineItems.length > 0) {
@@ -568,9 +600,22 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
         timeline.style.setProperty('--timeline-line-height', (bottom - top) + 'px');
       }
     });
+
+    // Gokarna theme dark/light mode sync
+    function syncTheme() {
+      const darkCss = document.getElementById('dark-theme');
+      const isDark = !darkCss || !darkCss.disabled;
+      document.documentElement.classList.toggle('light-mode', !isDark);
+    }
+    syncTheme();
+    const darkCss = document.getElementById('dark-theme');
+    if (darkCss) {
+      new MutationObserver(syncTheme).observe(darkCss, { attributes: true, attributeFilter: ['disabled'] });
+    }
     </script>
 </body>
 </html>
+
     </div>
     
     
@@ -580,9 +625,6 @@ Advisor: Prof. Jung Hee Cheon …&lt;/!DOCTYPE&gt;">
 
 
         </main><footer class="footer">
-    
-    
-
     
 
     

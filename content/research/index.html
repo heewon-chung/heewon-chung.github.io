@@ -14,13 +14,23 @@
         --secondary-color: #7fdde9;
         --muted-color: #b0b0b0;
         --border-color: #444;
+        --tag-bg: #333;
+        --highlight-color: #ffcc00;
+        --card-hover-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
       }
 
-      html,
-      body {
-        background: #22272e !important;
-        height: 100%;
-        min-height: 100%;
+      .light-mode {
+        --bg-color: #ffffff;
+        --text-color: #333;
+        --card-bg: #f5f7fa;
+        --card-hover-bg: #e8edf2;
+        --accent-color: #0066cc;
+        --secondary-color: #0a8993;
+        --muted-color: #666;
+        --border-color: #ddd;
+        --tag-bg: #e9ecef;
+        --highlight-color: #d48800;
+        --card-hover-shadow: 0 4px 16px rgba(10, 137, 147, 0.12);
       }
 
       body {
@@ -37,7 +47,7 @@
       }
 
       h2 {
-        color: #fff;
+        color: var(--text-color);
         font-size: 1.8rem;
         letter-spacing: -1px;
         margin-bottom: 1.5rem;
@@ -64,7 +74,7 @@
       }
 
       .topic-item:hover {
-        box-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
+        box-shadow: var(--card-hover-shadow);
         background: var(--card-hover-bg);
       }
 
@@ -140,13 +150,16 @@
       }
 
       .keyword {
-        color: #ffcc00;
+        color: var(--highlight-color);
         font-weight: bold;
       }
 
       @media (max-width: 600px) {
         .container {
           padding: 0 12px 24px 12px;
+        }
+        h2 {
+          font-size: 1.2rem;
         }
         .topic-item {
           padding: 14px 10px 10px 10px;
@@ -328,26 +341,26 @@
             <ul>
               <li>
                 <span class="keyword">Private Set Operations (PSO)</span>
-                &mdash; protocols for computing intersections, unions, and
+                is a protocol for computing intersections, unions, and
                 cardinalities over private datasets without revealing individual
                 elements. Techniques include oblivious polynomial evaluation,
                 cryptographic accumulators, and hash-based approaches.
               </li>
               <li>
                 <span class="keyword">Private Information Retrieval (PIR)</span>
-                &mdash; allows a client to query a database and retrieve an
-                entry without the server learning which entry was requested.
+                allows a client to query a database and retrieve an entry
+                without the server learning which entry was requested.
                 Constructions range from information-theoretic multi-server PIR
                 to computational single-server PIR based on lattice assumptions
                 (LWE/RLWE).
               </li>
               <li>
                 <span class="keyword">Function Secret Sharing (FSS)</span>
-                &mdash; splits a function (e.g., point function, interval
-                function) into compact secret keys distributed to servers. Each
-                server locally evaluates its share on any input, and the outputs
-                combine to yield the original function's value&mdash;enabling
-                lightweight two-server PIR and distributed computation.
+                splits a function (e.g., point function, interval function) into
+                compact secret keys distributed to servers. Each server locally
+                evaluates its share on any input, and the outputs combine to
+                yield the original function's value&mdash;enabling lightweight
+                two-server PIR and distributed computation.
               </li>
             </ul>
 
@@ -419,6 +432,18 @@
     </div>
 
     <script>
+      // Gokarna theme dark/light mode sync
+      function syncTheme() {
+        const darkCss = document.getElementById('dark-theme');
+        const isDark = !darkCss || !darkCss.disabled;
+        document.documentElement.classList.toggle('light-mode', !isDark);
+      }
+      syncTheme();
+      const darkCss = document.getElementById('dark-theme');
+      if (darkCss) {
+        new MutationObserver(syncTheme).observe(darkCss, { attributes: true, attributeFilter: ['disabled'] });
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         const items = document.querySelectorAll(".topic-item");
         items.forEach((item) => {

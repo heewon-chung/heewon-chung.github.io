@@ -4,9 +4,7 @@
     <meta charset="UTF-8" />
     <title>Publications</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- gokarna 테마와 어울리는 스타일 -->
     <style>
-      /* 다크모드 전용 스타일 */
       :root {
         --bg-color: #22272e;
         --text-color: #e0e0e0;
@@ -17,15 +15,30 @@
         --muted-color: #b0b0b0;
         --border-color: #444;
         --tag-bg: #333;
+        --highlight-color: #ffcc00;
+        --card-hover-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
+      }
+
+      .light-mode {
+        --bg-color: #ffffff;
+        --text-color: #333;
+        --card-bg: #f5f7fa;
+        --card-hover-bg: #e8edf2;
+        --accent-color: #0066cc;
+        --secondary-color: #0a8993;
+        --muted-color: #666;
+        --border-color: #ddd;
+        --tag-bg: #e9ecef;
+        --highlight-color: #d48800;
+        --card-hover-shadow: 0 4px 16px rgba(10, 137, 147, 0.12);
       }
 
       body {
         font-family: "Noto Sans KR", "Segoe UI", Arial, sans-serif;
-        background: var(--bg-color);
         color: var(--text-color);
       }
       h2 {
-        color: var(--text-color, #333333);
+        color: var(--text-color);
         margin-bottom: 1.5rem;
         font-size: 1.8rem;
         letter-spacing: -1px;
@@ -50,8 +63,8 @@
       .filter-button {
         padding: 3px 10px;
         border: none;
-        background: var(--card-bg, #f8f9fa);
-        color: var(--secondary-color, #17a2b8);
+        background: var(--card-bg);
+        color: var(--secondary-color);
         border-radius: 6px;
         cursor: pointer;
         font-size: 0.85rem;
@@ -61,8 +74,8 @@
       }
       .filter-button.active,
       .filter-button:hover {
-        background: var(--tag-bg, #e9ecef);
-        color: var(--secondary-color, #17a2b8);
+        background: var(--tag-bg);
+        color: var(--secondary-color);
       }
       .papers-list {
         list-style: none;
@@ -70,7 +83,7 @@
         margin: 0;
       }
       .paper-item {
-        background: var(--card-bg, #f8f9fa);
+        background: var(--card-bg);
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         padding: 16px 14px 12px 14px;
@@ -82,8 +95,8 @@
         border: none;
       }
       .paper-item:hover {
-        box-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
-        background: var(--card-hover-bg, #e9ecef);
+        box-shadow: var(--card-hover-shadow);
+        background: var(--card-hover-bg);
       }
       .paper-header {
         display: flex;
@@ -91,7 +104,7 @@
         gap: 0.2rem;
       }
       .paper-title {
-        color: var(--accent-color, #0056b3);
+        color: var(--accent-color);
         font-size: 1rem;
         font-weight: bold;
         text-decoration: none;
@@ -102,17 +115,17 @@
       }
       .authors {
         font-size: 0.9rem;
-        color: var(--text-color, #333333);
+        color: var(--text-color);
       }
       .conference {
         display: block;
         font-style: italic;
         font-size: 0.85rem;
-        color: var(--muted-color, #6c757d);
+        color: var(--muted-color);
         margin-top: 4px;
       }
       .highlight {
-        color: #ffcc00;
+        color: var(--highlight-color);
         font-weight: bold;
       }
       .tags {
@@ -122,8 +135,8 @@
         gap: 3px;
       }
       .tag {
-        background: var(--tag-bg, #e9ecef);
-        color: var(--secondary-color, #17a2b8);
+        background: var(--tag-bg);
+        color: var(--secondary-color);
         border-radius: 4px;
         padding: 1px 6px;
         font-size: 0.7rem;
@@ -132,8 +145,8 @@
         line-height: 1.4;
       }
       .tag:hover {
-        background: var(--border-color, #dee2e6);
-        color: var(--accent-color, #0056b3);
+        background: var(--border-color);
+        color: var(--accent-color);
       }
       .paper-details {
         max-height: 0;
@@ -148,17 +161,17 @@
         padding: 1rem 0 0.5rem 0;
       }
       .details-content {
-        border-top: 1px solid var(--border-color, #dee2e6);
+        border-top: 1px solid var(--border-color);
         padding-top: 1.2rem;
       }
       .abstract {
         font-size: 0.98rem;
-        color: var(--text-color, #333333);
+        color: var(--text-color);
         margin-bottom: 0.8rem;
       }
       @media (max-width: 600px) {
         .container {
-          padding: 6px;
+          padding: 0 12px 24px 12px;
         }
         h2 {
           font-size: 1.2rem;
@@ -177,7 +190,7 @@
         style="
           margin-top: 2rem;
           padding-top: 1rem;
-          border-top: 1px solid var(--border-color, #dee2e6);
+          border-top: 1px solid var(--border-color);
         "
       >
         <span class="filter-label">Filter by Tag:</span>
@@ -217,6 +230,18 @@
       </div>
     </div>
     <script>
+      // Gokarna theme dark/light mode sync
+      function syncTheme() {
+        const darkCss = document.getElementById('dark-theme');
+        const isDark = !darkCss || !darkCss.disabled;
+        document.documentElement.classList.toggle('light-mode', !isDark);
+      }
+      syncTheme();
+      const darkCssEl = document.getElementById('dark-theme');
+      if (darkCssEl) {
+        new MutationObserver(syncTheme).observe(darkCssEl, { attributes: true, attributeFilter: ['disabled'] });
+      }
+
       const paperData = [
         {
           title:
@@ -239,6 +264,17 @@
           tags: ["mpc", "pso"],
           abstract:
             "Abstract: Private set union (PSU) has been an emerging topic in recent years due to its variety of applications. In particular, we are interested in deploying PSU in a cloud setting such that two players, the sender and the receiver, may outsource their sets to the cloud and update their sets. Later, the receiver can submit a union query to the cloud and learn the union of the sets without knowing the intersection. Of course, there is no need to restrict this scenario to only two players. A PSU operation that satisfies these properties is called updatable delegated PSU (UD-PSU). Despite the apparent usefulness of such operations, no related research, even on delegated PSU, has been conducted since Abadi et al. (TDSC 2017) posed the open problem of constructing a delegated PSU protocol. In this work, we address the above problem by presenting the first protocol for multiparty UD-PSU. Our starting point is Abadi et al.'s protocol (FC 2022) for multiparty updatable delegated private set intersection (a.k.a. Feather) built on a polynomial representation of the intersection of sets. The challenging hurdle for delegated PSU is to obtain a polynomial representation of the union of sets without revealing any information about the sets beyond the result. We develop a delegated PSU protocol by exploiting a rational polynomial representation. We then extend this basic protocol to support update operations, i.e., UD-PSU. Second, we improve the update efficiency of the resulting UD-PSU protocol to O~(nlogp), which works on polynomials of degree n over finite fields of order p. Finally, we implement our protocol in C++ and perform a comprehensive evaluation varying the cardinality of the sets and the number of players. Interestingly, the experimental results demonstrate that our protocol is comparable to Feather in overall performance. In particular, our update protocol shows an 8–12× improvement relative to Feather's update.",
+        },
+        {
+          title:
+            "Authentication of Multi-agent System with Verifiable Computation and Distributed Aggregation",
+          url: "https://ieeexplore.ieee.org/document/10886336",
+          authors:
+            "Seungbeom Lee, Dongwoo Kim, Heewon Chung, Junsoo Kim, Hyungbo Shim",
+          conference: "2024 IEEE 63rd Conference on Decision and Control (CDC)",
+          tags: ["vc"],
+          abstract:
+            "We propose an authentication scheme for a multiagent system over integers, based on verifiable computation primitives. The naive approach, employing Freivalds’ algorithm in centralized way, faces several challenges. Specifically, unreliability of the network introduces the risk of information tampering by other agents. To this end, it requires locally updating and merging the proofs of the individual states in a distributed manner. Our proposed method addresses these issues with assuming presence of a leader agent who is responsible for validating the correctness of all the states of the agents. This can be achieved by a distributed protocol that aggregates proofs from the individual agents, relying on the well-known knowledge-of-exponent assumption. By using this distributed protocol, computational complexity and communication cost are reduced compared to centralized verification. Furthermore, we incorporate a clustering technique to distribute storage requirements.",
         },
         {
           title:
