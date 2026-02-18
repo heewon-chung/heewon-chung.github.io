@@ -232,14 +232,17 @@
     <script>
       // Gokarna theme dark/light mode sync
       function syncTheme() {
-        const darkCss = document.getElementById('dark-theme');
+        const darkCss = document.getElementById("dark-theme");
         const isDark = !darkCss || !darkCss.disabled;
-        document.documentElement.classList.toggle('light-mode', !isDark);
+        document.documentElement.classList.toggle("light-mode", !isDark);
       }
       syncTheme();
-      const darkCssEl = document.getElementById('dark-theme');
+      const darkCssEl = document.getElementById("dark-theme");
       if (darkCssEl) {
-        new MutationObserver(syncTheme).observe(darkCssEl, { attributes: true, attributeFilter: ['disabled'] });
+        new MutationObserver(syncTheme).observe(darkCssEl, {
+          attributes: true,
+          attributeFilter: ["disabled"],
+        });
       }
 
       const paperData = [
@@ -272,7 +275,7 @@
           authors:
             "Seungbeom Lee, Dongwoo Kim, Heewon Chung, Junsoo Kim, Hyungbo Shim",
           conference: "2024 IEEE 63rd Conference on Decision and Control (CDC)",
-          tags: ["vc"],
+          tags: ["vc", "zkp"],
           abstract:
             "We propose an authentication scheme for a multiagent system over integers, based on verifiable computation primitives. The naive approach, employing Freivalds’ algorithm in centralized way, faces several challenges. Specifically, unreliability of the network introduces the risk of information tampering by other agents. To this end, it requires locally updating and merging the proofs of the individual states in a distributed manner. Our proposed method addresses these issues with assuming presence of a leader agent who is responsible for validating the correctness of all the states of the agents. This can be achieved by a distributed protocol that aggregates proofs from the individual agents, relying on the well-known knowledge-of-exponent assumption. By using this distributed protocol, computational complexity and communication cost are reduced compared to centralized verification. Furthermore, we incorporate a clustering technique to distribute storage requirements.",
         },
@@ -293,7 +296,7 @@
           authors: "Heewon Chung, Dongwoo Kim, Jeong Han Kim, Jiseung Kim",
           conference:
             "Journal of Communications and Networks, 25(3) 271-284, 2023",
-          tags: ["zkp", "snark", "pqc"],
+          tags: ["zkp", "snark", "pqc", "vc"],
           abstract:
             "Abstract: This paper addresses a new lattice-based designated zk-SNARK having the smallest proof size in the amortized sense, from the linear-only ring learning with the error (RLWE) encodings. We first generalize a quadratic arithmetic programming (QAP) over a finite field to a ring-variant over a polynomial ring Zp [X]/(XN + 1) with a power of two N. Then, we propose a zk-SNARK over this ring with a linear-only encoding assumption on RLWE encodings. From the ring isomorphism Zp[X]/(XN + 1) ≅ ZNp, the proposed scheme packs multiple messages from Zp, resulting in much smaller amortized proof size compared to previous works. In addition, we present a refined analysis on the noise flooding technique based on the Hellinger divergence instead of the conventional statistical distance, which reduces the size of a proof. In particular, our proof size is 276.5 KB and the amortized proof size is only 156 bytes since our protocol allows to batch N proofs into a single proof. Therefore, we achieve the smallest amortized proof size in the category of lattice-based zk-SNARKs and comparable proof size in the (pre-quantum) zk-SNARKs category.",
         },

@@ -1,455 +1,503 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>About</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        :root {
-            --bg-color: #22272e;
-            --text-color: #e0e0e0;
-            --card-bg: #23272b;
-            --card-hover-bg: #282c34;
-            --accent-color: #4da6ff;
-            --secondary-color: #7fdde9;
-            --muted-color: #b0b0b0;
-            --border-color: #444;
-            --tag-bg: #333;
-            --highlight-color: #ffcc00;
-            --card-hover-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
-        }
+      :root {
+        --bg-color: #22272e;
+        --text-color: #e0e0e0;
+        --card-bg: #23272b;
+        --card-hover-bg: #282c34;
+        --accent-color: #4da6ff;
+        --secondary-color: #7fdde9;
+        --muted-color: #b0b0b0;
+        --border-color: #444;
+        --tag-bg: #333;
+        --highlight-color: #ffcc00;
+        --card-hover-shadow: 0 4px 16px rgba(127, 221, 233, 0.12);
+      }
 
-        .light-mode {
-            --bg-color: #ffffff;
-            --text-color: #333;
-            --card-bg: #f5f7fa;
-            --card-hover-bg: #e8edf2;
-            --accent-color: #0066cc;
-            --secondary-color: #0a8993;
-            --muted-color: #666;
-            --border-color: #ddd;
-            --tag-bg: #e9ecef;
-            --highlight-color: #d48800;
-            --card-hover-shadow: 0 4px 16px rgba(10, 137, 147, 0.12);
-        }
+      .light-mode {
+        --bg-color: #ffffff;
+        --text-color: #333;
+        --card-bg: #f5f7fa;
+        --card-hover-bg: #e8edf2;
+        --accent-color: #0066cc;
+        --secondary-color: #0a8993;
+        --muted-color: #666;
+        --border-color: #ddd;
+        --tag-bg: #e9ecef;
+        --highlight-color: #d48800;
+        --card-hover-shadow: 0 4px 16px rgba(10, 137, 147, 0.12);
+      }
 
-        body {
-            font-family: 'Noto Sans KR', 'Segoe UI', Arial, sans-serif;
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        font-family: "Noto Sans KR", "Segoe UI", Arial, sans-serif;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 4px 24px 4px;
+      }
+      h2 {
+        color: var(--text-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        letter-spacing: -1px;
+      }
+      .section-title {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 2.5rem;
+        margin-bottom: 1.2rem;
+      }
+      .card-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .card {
+        background: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 16px 14px 12px 14px;
+        margin-bottom: 14px;
+        transition:
+          box-shadow 0.2s,
+          background 0.3s;
+      }
+      .card-title {
+        color: var(--accent-color);
+        font-size: 1.05rem;
+        font-weight: bold;
+        margin-bottom: 0.2rem;
+      }
+      .card-meta {
+        color: var(--muted-color);
+        font-size: 0.92rem;
+        margin-bottom: 0.2rem;
+      }
+      .card-desc {
+        color: var(--text-color);
+        font-size: 0.98rem;
+        margin-bottom: 0.1rem;
+      }
+      .linkedin-btn {
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        display: inline-block;
+      }
+      .linkedin-btn:hover {
+        background: var(--secondary-color);
+        color: var(--card-bg);
+      }
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 2.5rem 0 2rem 0;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 130px;
+        top: 0;
+        width: 2px;
+        height: var(--timeline-line-height, 100%);
+        background: var(--accent-color);
+      }
+      .timeline-item {
+        position: relative; /* For icon positioning */
+        display: flex;
+        align-items: flex-start;
+        margin-left: -50px;
+        margin-bottom: 2.2rem;
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        min-height: 60px;
+      }
+      .timeline-item.visible {
+        opacity: 0.5; /* Fade out past jobs */
+        transform: none;
+      }
+      .timeline-item.visible.current,
+      .timeline-item.visible:hover {
+        opacity: 1; /* Highlight current job and hovered items */
+      }
+
+      /* Education Section Styling */
+      .education-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1.5rem; /* Spacing between items */
+        margin-left: -50px; /* Align with career timeline items */
+      }
+
+      .education-date {
+        flex: 0 0 70px; /* Fixed width for the year */
+        padding-top: 0;
+        line-height: 1.5;
+        font-size: 1.08rem;
+        color: var(--muted-color);
+      }
+
+      .education-list .timeline-title {
+        text-indent: 0;
+      }
+      .education-list .timeline-title::before {
+      }
+      .education-list .education-item.visible {
+        opacity: 1 !important;
+      }
+      /* timeline alignment */
+      .timeline,
+      .education-list {
+        margin-left: 100px;
+      }
+      .timeline-date,
+      .education-list .timeline-date {
+        width: 180px;
+        min-width: 180px;
+        margin-right: 16px;
+        text-align: left;
+        color: var(--muted-color);
+      }
+      .timeline-content,
+      .education-list .timeline-content {
+        margin-left: 10px;
+        min-width: 300px;
+        max-width: 1100px;
+      }
+      .timeline-date-start {
+        display: inline-block;
+        min-width: 60px;
+        text-align: left;
+      }
+      .timeline-date-dash {
+        margin: 0 4px;
+      }
+      .timeline-date-end {
+        min-width: 60px;
+        text-align: left;
+        margin-right: 0px;
+      }
+      .timeline-title {
+        color: var(--accent-color);
+        font-size: 1.08rem;
+        font-weight: bold;
+        margin-bottom: 0.1rem;
+        line-height: 1.5;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .timeline-desc {
+        color: var(--text-color);
+        font-size: 0.98rem;
+        line-height: 1.5;
+      }
+      .timeline-desc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .promotion-path {
+        position: relative;
+        padding-left: 25px;
+        margin-top: 10px;
+      }
+
+      .promotion-path .promotion-step {
+        position: relative;
+      }
+      .promotion-path .promotion-step:not(:last-child) {
+        padding-bottom: 20px;
+      }
+      .promotion-path .promotion-step::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 7px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background-color: var(--bg-color);
+        border: 2px solid var(--accent-color);
+        z-index: 1;
+      }
+
+      .promotion-step .role {
+        display: block;
+        font-weight: 500;
+        color: var(--text-color);
+        font-size: 0.98rem;
+      }
+      .promotion-step .period {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--muted-color);
+        margin-top: 4px;
+      }
+
+      .degree-label {
+        color: var(--accent-color);
+        font-weight: bold;
+        font-size: 1.08rem;
+      }
+      .education-list .degree-label {
+        display: inline-block;
+      }
+      .school-label {
+        color: var(--secondary-color);
+        font-style: italic;
+        font-size: 1.05rem;
+      }
+      .timeline-desc .advisor {
+        margin-left: 50px;
+      }
+      .timeline-desc .thesis {
+        margin-left: 50px;
+      }
+      .career-detail {
+        margin-left: 18px;
+      }
+      .promotion-path {
+        margin-left: 18px;
+      }
+
+      @media (max-width: 600px) {
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 4px 24px 4px;
+          padding: 0 12px 24px 12px;
         }
-        h2 {
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            letter-spacing: -1px;
+        .timeline,
+        .education-list {
+          margin-left: 40px;
         }
-        .section-title {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 2.5rem;
-            margin-bottom: 1.2rem;
-        }
-        .card-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            padding: 16px 14px 12px 14px;
-            margin-bottom: 14px;
-            transition: box-shadow 0.2s, background 0.3s;
-        }
-        .card-title {
-            color: var(--accent-color);
-            font-size: 1.05rem;
-            font-weight: bold;
-            margin-bottom: 0.2rem;
-        }
-        .card-meta {
-            color: var(--muted-color);
-            font-size: 0.92rem;
-            margin-bottom: 0.2rem;
-        }
-        .card-desc {
-            color: var(--text-color);
-            font-size: 0.98rem;
-            margin-bottom: 0.1rem;
-        }
-        .linkedin-btn {
-            padding: 0;
-            background: none;
-            border: none;
-            box-shadow: none;
-            border-radius: 0;
-            display: inline-block;
-        }
-        .linkedin-btn:hover {
-            background: var(--secondary-color);
-            color: var(--card-bg);
-        }
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            margin: 2.5rem 0 2rem 0;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 130px;
-            top: 0;
-            width: 2px;
-            height: var(--timeline-line-height, 100%);
-            background: var(--accent-color);
-        }
+        .education-item,
         .timeline-item {
-            position: relative; /* For icon positioning */
-            display: flex;
-            align-items: flex-start;
-            margin-left: -50px;
-            margin-bottom: 2.2rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
-            min-height: 60px;
+          margin-left: -20px;
         }
-        .timeline-item.visible {
-            opacity: 0.5; /* Fade out past jobs */
-            transform: none;
+        .timeline-date,
+        .education-list .timeline-date {
+          width: 140px;
+          min-width: 140px;
         }
-        .timeline-item.visible.current,
-        .timeline-item.visible:hover {
-            opacity: 1; /* Highlight current job and hovered items */
-        }
-
-        /* Education Section Styling */
-        .education-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem; /* Spacing between items */
-            margin-left: -50px; /* Align with career timeline items */
-        }
-
-        .education-date {
-            flex: 0 0 70px; /* Fixed width for the year */
-            padding-top: 0;
-            line-height: 1.5;
-            font-size: 1.08rem;
-            color: var(--muted-color);
-        }
-
-        .education-list .timeline-title {
-            text-indent: 0;
-        }
-        .education-list .timeline-title::before {
-        }
-        .education-list .education-item.visible {
-            opacity: 1 !important;
-        }
-        /* timeline alignment */
-        .timeline, .education-list {
-            margin-left: 100px;
-        }
-        .timeline-date, .education-list .timeline-date {
-            width: 180px;
-            min-width: 180px;
-            margin-right: 16px;
-            text-align: left;
-            color: var(--muted-color);
-        }
-        .timeline-content, .education-list .timeline-content {
-            margin-left: 10px;
-            min-width: 300px;
-            max-width: 1100px;
-        }
-        .timeline-date-start {
-            display: inline-block;
-            min-width: 60px;
-            text-align: left;
-        }
-        .timeline-date-dash {
-            margin: 0 4px;
-        }
-        .timeline-date-end {
-            min-width: 60px;
-            text-align: left;
-            margin-right: 0px;
-        }
-        .timeline-title {
-            color: var(--accent-color);
-            font-size: 1.08rem;
-            font-weight: bold;
-            margin-bottom: 0.1rem;
-            line-height: 1.5;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .timeline-desc {
-            color: var(--text-color);
-            font-size: 0.98rem;
-            line-height: 1.5;
-        }
-        .timeline-desc-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .promotion-path {
-            position: relative;
-            padding-left: 25px;
-            margin-top: 10px;
-        }
-
-        .promotion-path .promotion-step {
-            position: relative;
-        }
-        .promotion-path .promotion-step:not(:last-child) {
-            padding-bottom: 20px;
-        }
-        .promotion-path .promotion-step::before {
-            content: '';
-            position: absolute;
-            left: -20px;
-            top: 7px;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background-color: var(--bg-color);
-            border: 2px solid var(--accent-color);
-            z-index: 1;
-        }
-
-        .promotion-step .role {
-            display: block;
-            font-weight: 500;
-            color: var(--text-color);
-            font-size: 0.98rem;
-        }
-        .promotion-step .period {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--muted-color);
-            margin-top: 4px;
-        }
-
-        .degree-label {
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 1.08rem;
-        }
-        .education-list .degree-label {
-            display: inline-block;
-        }
-        .school-label {
-            color: var(--secondary-color);
-            font-style: italic;
-            font-size: 1.05rem;
-        }
-        .timeline-desc .advisor {
-            margin-left: 50px;
-        }
-        .timeline-desc .thesis {
-            margin-left: 50px;
-        }
-        .career-detail {
-            margin-left: 18px;
-        }
-        .promotion-path {
-            margin-left: 18px;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 0 12px 24px 12px;
-            }
-            .timeline, .education-list {
-                margin-left: 40px;
-            }
-            .education-item, .timeline-item {
-                margin-left: -20px;
-            }
-            .timeline-date, .education-list .timeline-date {
-                width: 140px;
-                min-width: 140px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h2>About</h2>
-        <div class="section-title"><span style="font-size:1.2em; vertical-align:middle;">&#127891;</span> Education</div>
-        <div class="education-list">
-            <div class="education-item">
-                <div class="education-date">
-                    <span class="education-date-year">2017</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">
-                        <span class="degree-label">Ph.D. in Mathematics</span>
-                        <span class="school-label">Seoul National University</span>
-                    </div>
-                    <div class="timeline-desc">
-                        <span class="thesis"><b>Thesis:</b> Secure Computation via Homomorphic Encryption</span><br>
-                        <span class="advisor"><b>Advisor:</b> Prof. Jung Hee Cheon</span>
-                    </div>
-                </div>
+      <h2>About</h2>
+      <div class="section-title">
+        <span style="font-size: 1.2em; vertical-align: middle">&#127891;</span>
+        Education
+      </div>
+      <div class="education-list">
+        <div class="education-item">
+          <div class="education-date">
+            <span class="education-date-year">2017</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">
+              <span class="degree-label">Ph.D. in Mathematics</span>
+              <span class="school-label">Seoul National University</span>
             </div>
-            <div class="education-item">
-                <div class="education-date">
-                    <span class="education-date-year">2013</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">
-                        <span class="degree-label">M.S. in Mathematics</span>
-                        <span class="school-label">Seoul National University</span>
-                    </div>
-                    <div class="timeline-desc">
-                        <span class="thesis"><b>Thesis:</b> Efficient Inversion Algorithms and Its Application to ECDLP</span><br>
-                        <span class="advisor"><b>Advisor:</b> Prof. Jung Hee Cheon</span>
-                    </div>
-                </div>
+            <div class="timeline-desc">
+              <span class="thesis"
+                ><b>Thesis:</b> Secure Computation via Homomorphic
+                Encryption</span
+              ><br />
+              <span class="advisor"><b>Advisor:</b> Prof. Jung Hee Cheon</span>
             </div>
-            <div class="education-item">
-                <div class="education-date">
-                    <span class="education-date-year">2010</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">
-                        <span class="degree-label">B.S. in Mathematics</span>
-                        <span class="school-label">KAIST</span>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="section-title"><span style="font-size:1.2em; vertical-align:middle;">&#128188;</span> Career</div>
-        <div class="timeline">
-            <div class="timeline-item current">
-                <div class="timeline-date">
-                    <span class="timeline-date-start">2025.03</span>
-                    <span class="timeline-date-dash">&ndash;</span>
-                    <span class="timeline-date-end">&nbsp;</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Jeonbuk National University</div>
-                    <div class="timeline-desc career-detail">Assistant Professor, Department of Software Engineering</div>
-                </div>
+        <div class="education-item">
+          <div class="education-date">
+            <span class="education-date-year">2013</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">
+              <span class="degree-label">M.S. in Mathematics</span>
+              <span class="school-label">Seoul National University</span>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">
-                    <span class="timeline-date-start">2022.01</span>
-                    <span class="timeline-date-dash">&ndash;</span>
-                    <span class="timeline-date-end">2025.02</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">DESILO</div>
-                    <div class="timeline-desc career-detail">Cryptographic Researcher, Research Team</div>
-                </div>
+            <div class="timeline-desc">
+              <span class="thesis"
+                ><b>Thesis:</b> Efficient Inversion Algorithms and Its
+                Application to ECDLP</span
+              ><br />
+              <span class="advisor"><b>Advisor:</b> Prof. Jung Hee Cheon</span>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-date">
-                    <span class="timeline-date-start">2020.04</span>
-                    <span class="timeline-date-dash">&ndash;</span>
-                    <span class="timeline-date-end">2021.11</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Hanyang University</div>
-                    <div class="timeline-desc career-detail">Postdoctoral Researcher, Department of Mathematics</div>
-                    <div class="timeline-desc career-detail"><b>Advisor:</b> Prof. Jae Hong Seo</div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">
-                    <span class="timeline-date-start">2018.08</span>
-                    <span class="timeline-date-dash">&ndash;</span>
-                    <span class="timeline-date-end">2019.03</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">MEDIUM</div>
-                    <div class="timeline-desc career-detail">Researcher</div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">
-                    <span class="timeline-date-start">2017.02</span>
-                    <span class="timeline-date-dash">&ndash;</span>
-                    <span class="timeline-date-end">2018.07</span>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-title">Korea Telecom</div>
-                    <ul class="timeline-desc-list promotion-path">
-                        <li class="promotion-step">
-                            <span class="role">Manager, Blockchain Biz Center</span>
-                            <span class="period">2018.01 &ndash; 2018.07</span>
-                        </li>
-                        <li class="promotion-step">
-                            <span class="role">Associate, Blockchain Center</span>
-                            <span class="period">2017.02 &ndash; 2017.12</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+          </div>
         </div>
-        <a class="linkedin-btn" href="https://www.linkedin.com/in/heewonchung/" target="_blank" rel="noopener">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width:32px; height:32px; display:block;">
-        </a>
+        <div class="education-item">
+          <div class="education-date">
+            <span class="education-date-year">2010</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">
+              <span class="degree-label">B.S. in Mathematics</span>
+              <span class="school-label">KAIST</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section-title">
+        <span style="font-size: 1.2em; vertical-align: middle">&#128188;</span>
+        Career
+      </div>
+      <div class="timeline">
+        <div class="timeline-item current">
+          <div class="timeline-date">
+            <span class="timeline-date-start">2025.03</span>
+            <span class="timeline-date-dash">&ndash;</span>
+            <span class="timeline-date-end">&nbsp;</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">Jeonbuk National University</div>
+            <div class="timeline-desc career-detail">
+              Assistant Professor, Department of Software Engineering
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <span class="timeline-date-start">2022.01</span>
+            <span class="timeline-date-dash">&ndash;</span>
+            <span class="timeline-date-end">2025.02</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">DESILO</div>
+            <div class="timeline-desc career-detail">
+              Cryptographic Researcher, Research Team
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <span class="timeline-date-start">2020.04</span>
+            <span class="timeline-date-dash">&ndash;</span>
+            <span class="timeline-date-end">2021.11</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">Hanyang University</div>
+            <div class="timeline-desc career-detail">
+              Postdoctoral Researcher, Department of Mathematics
+            </div>
+            <div class="timeline-desc career-detail">
+              <b>Advisor:</b> Prof. Jae Hong Seo
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <span class="timeline-date-start">2019.08</span>
+            <span class="timeline-date-dash">&ndash;</span>
+            <span class="timeline-date-end">2020.03</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">MEDIUM</div>
+            <div class="timeline-desc career-detail">Researcher</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <span class="timeline-date-start">2018.02</span>
+            <span class="timeline-date-dash">&ndash;</span>
+            <span class="timeline-date-end">2019.07</span>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-title">Korea Telecom</div>
+            <ul class="timeline-desc-list promotion-path">
+              <li class="promotion-step">
+                <span class="role">Manager, Blockchain Biz Center</span>
+                <span class="period">2019.01 &ndash; 2019.07</span>
+              </li>
+              <li class="promotion-step">
+                <span class="role">Associate, Blockchain Center</span>
+                <span class="period">2018.02 &ndash; 2018.12</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <a
+        class="linkedin-btn"
+        href="https://www.linkedin.com/in/heewonchung/"
+        target="_blank"
+        rel="noopener"
+      >
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+          alt="LinkedIn"
+          style="width: 32px; height: 32px; display: block"
+        />
+      </a>
     </div>
 
     <script>
-    // Timeline animation and dynamic line height
-    document.addEventListener('DOMContentLoaded', function() {
-      // Timeline animation
-      const items = document.querySelectorAll('.timeline-item');
-      const observer = new window.IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
+      // Timeline animation and dynamic line height
+      document.addEventListener("DOMContentLoaded", function () {
+        // Timeline animation
+        const items = document.querySelectorAll(".timeline-item");
+        const observer = new window.IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
 
-      items.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.1}s`;
-        observer.observe(item);
+        items.forEach((item, index) => {
+          item.style.transitionDelay = `${index * 0.1}s`;
+          observer.observe(item);
+        });
+
+        // Dynamic timeline line height
+        const timeline = document.querySelector(".timeline");
+        const timelineItems = timeline.querySelectorAll(".timeline-item");
+        if (timelineItems.length > 0) {
+          const first = timelineItems[0];
+          const last = timelineItems[timelineItems.length - 1];
+          const top = first.offsetTop;
+          const bottom = last.offsetTop + last.offsetHeight;
+          timeline.style.setProperty(
+            "--timeline-line-height",
+            bottom - top + "px",
+          );
+        }
       });
 
-      // Dynamic timeline line height
-      const timeline = document.querySelector('.timeline');
-      const timelineItems = timeline.querySelectorAll('.timeline-item');
-      if (timelineItems.length > 0) {
-        const first = timelineItems[0];
-        const last = timelineItems[timelineItems.length - 1];
-        const top = first.offsetTop;
-        const bottom = last.offsetTop + last.offsetHeight;
-        timeline.style.setProperty('--timeline-line-height', (bottom - top) + 'px');
+      // Gokarna theme dark/light mode sync
+      function syncTheme() {
+        const darkCss = document.getElementById("dark-theme");
+        const isDark = !darkCss || !darkCss.disabled;
+        document.documentElement.classList.toggle("light-mode", !isDark);
       }
-    });
-
-    // Gokarna theme dark/light mode sync
-    function syncTheme() {
-      const darkCss = document.getElementById('dark-theme');
-      const isDark = !darkCss || !darkCss.disabled;
-      document.documentElement.classList.toggle('light-mode', !isDark);
-    }
-    syncTheme();
-    const darkCss = document.getElementById('dark-theme');
-    if (darkCss) {
-      new MutationObserver(syncTheme).observe(darkCss, { attributes: true, attributeFilter: ['disabled'] });
-    }
+      syncTheme();
+      const darkCss = document.getElementById("dark-theme");
+      if (darkCss) {
+        new MutationObserver(syncTheme).observe(darkCss, {
+          attributes: true,
+          attributeFilter: ["disabled"],
+        });
+      }
     </script>
-</body>
+  </body>
 </html>
